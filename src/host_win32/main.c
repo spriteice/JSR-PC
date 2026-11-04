@@ -132,11 +132,37 @@ static void shim_GetModuleFileNameW(void) {
     STDCALL_RETURN(3);
 }
 
+/* DirectInput8Create takes the caller's hInstance, which the guest gets from
+ * GetModuleHandle(NULL) above. The mapped exe is not a module Windows loaded,
+ * so DirectInput refuses that handle, and the game never checks the result:
+ * on the first boot it read the interface pointer it was never given and
+ * crashed in sub_00591590. The host's own handle stands in. DirectInput uses
+ * it only to identify the caller. */
+typedef HRESULT (WINAPI *dinput8_create_t)(HINSTANCE, DWORD, const void*, void**, void*);
+
+static void shim_DirectInput8Create(void) {
+    static dinput8_create_t real;
+    HINSTANCE inst = (HINSTANCE)(uintptr_t)STDCALL_ARG(0);
+    HRESULT hr;
+    if (!real) {
+        HMODULE dll = LoadLibraryA("dinput8.dll");
+        if (dll) real = (dinput8_create_t)(void*)GetProcAddress(dll, "DirectInput8Create");
+    }
+    if ((uintptr_t)inst == JSR_IMAGE_BASE) inst = GetModuleHandleW(NULL);
+    hr = real ? real(inst, STDCALL_ARG(1), (const void*)(uintptr_t)STDCALL_ARG(2),
+                     (void**)(uintptr_t)STDCALL_ARG(3), (void*)(uintptr_t)STDCALL_ARG(4))
+              : E_FAIL;
+    if (FAILED(hr)) fprintf(stderr, "jsr-pc: DirectInput8Create failed (0x%08lX)\n", (unsigned long)hr);
+    g_eax = (uint32_t)hr;
+    STDCALL_RETURN(5);
+}
+
 static native32_shim_t g_shims[] = {
     { "GetModuleHandleA", shim_GetModuleHandleA },
     { "GetModuleHandleW", shim_GetModuleHandleW },
     { "GetModuleFileNameA", shim_GetModuleFileNameA },
     { "GetModuleFileNameW", shim_GetModuleFileNameW },
+    { "DirectInput8Create", shim_DirectInput8Create },
 };
 
 /* ------------------------------------------------------------------- main */

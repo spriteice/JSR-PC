@@ -47,6 +47,15 @@ M0 Reproduce
   M4b and M5 compare against them.
 - **Accept:** the recompiled exe reaches gameplay and saves. A 10-minute session shows
   no dispatch misses (`recomp_lookup` logging) and no VEH crash dumps.
+- **First boot (2026-11-04, desktop, MSVC 19.51, a test build at `3990a89` with the
+  two lifter fixes stood in by `CL=/FIrecomp_funcs.h` and `LINK=/FORCE:UNRESOLVED`):**
+  all 150 imports bound (143 native, 7 shimmed, 0 unresolved). The lifted CRT
+  start-up ran 1,352 indirect calls, then crashed after 5.7 s reading 0x455F5245 in
+  `sub_00591590`, the input set-up, before any window showed. It passes the guest's
+  hInstance (0x00400000) to `DirectInput8Create`, which refuses a module Windows
+  didn't load, and reads the interface pointer without checking the result. The
+  host now shims `DirectInput8Create` with its own handle. The game folder was
+  unchanged.
 
 ## M3: Cross-check function recovery (analysis agent; needs Ghidra 11+)
 
