@@ -1,0 +1,3 @@
+#!/bin/sh
+# Compiler wrapper: pcrecomp difftest links without -lm, which fails on Linux glibc.
+exec "${CC_REAL:-gcc}" "$@" -lm

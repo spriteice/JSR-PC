@@ -1,0 +1,16 @@
+# Game material and lifted output never go in this repo (see AGENTS.md, rule 1).
+work/
+third_party/
+*.exe
+*.dll
+*.AFS
+*.afs
+*.ADX
+*.adx
+*.pdb
+src/recomp/gen/
+recomp_[0-9]*.c
+recomp_dispatch.c
+recomp_funcs.h
+*.chk
+build/

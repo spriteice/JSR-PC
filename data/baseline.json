@@ -1,0 +1,38 @@
+{
+ "date": "2026-11-04",
+ "pcrecomp_commit": "ef3f0da6e08a8eb7a3f869273f3df071ca8d7373",
+ "pe_analyze_seconds": 0.8,
+ "disasm32": {
+  "functions": 18102,
+  "thunks": 2460,
+  "leaves": 6832,
+  "instructions": 1760152,
+  "coverage_pct": 77.24,
+  "discovery_rounds": 5,
+  "seconds": 166
+ },
+ "lift": {
+  "source_files": 19,
+  "extra_files": [
+   "recomp_dispatch.c",
+   "recomp_funcs.h"
+  ],
+  "lines": 4036867,
+  "size_mb": 189,
+  "dispatch_entries": 18102,
+  "icall_sites": 4639,
+  "unimplemented_insns": 7,
+  "functions_with_unimplemented": 4,
+  "seconds": 175
+ },
+ "syntax_check": {
+  "compiler": "gcc 13 -fsyntax-only (x86-64)",
+  "files": 20,
+  "errors": 0,
+  "seconds": 37
+ },
+ "difftest": {
+  "result": "374/374 match hardware, 0 known divergences, 0 failures",
+  "note": "needs -lm on Linux: RECOMP_CC=scripts/gcc-lm"
+ }
+}
