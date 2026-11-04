@@ -2,7 +2,9 @@
 # Check a lift against data/baseline.json: syntax-check every generated file and run
 # pcrecomp's differential lifter test (lifted C vs Unicorn).
 # Usage: scripts/03_check.sh
+# PYTHON picks the interpreter (default python3).
 set -euo pipefail
+py="${PYTHON:-python3}"
 here="$(cd "$(dirname "$0")/.." && pwd)"
 pc="$here/third_party/pcrecomp"
 gen="$here/work/gen"
@@ -19,6 +21,6 @@ done
 echo "  syntax errors: $errs (baseline 0)"
 
 echo "[2/2] difftest"
-( cd "$pc" && RECOMP_CC="$here/scripts/gcc-lm" python3 tools/lift/difftest.py | tail -1 )
+( cd "$pc" && RECOMP_CC="$here/scripts/gcc-lm" "$py" tools/lift/difftest.py | tail -1 )
 echo "  baseline: 392/392 match hardware, 0 known divergences, 0 failures"
 [[ $errs -eq 0 ]]

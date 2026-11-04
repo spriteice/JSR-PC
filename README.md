@@ -16,6 +16,25 @@ scripts/02_lift.sh               # ~6 min: analyse, recover 18,102 functions, li
 scripts/03_check.sh              # syntax check + pcrecomp difftest, vs data/baseline.json
 ```
 
+## Building on Windows (the native32 host; not yet run)
+
+Needs Visual Studio 2022 or later, or its Build Tools, with the x86 C compiler;
+Git for Windows; and Python 3.10+ (a venv keeps pcrecomp's packages to itself).
+From Git Bash:
+
+```bash
+py -3.12 -m venv work/venv && export PYTHON="$PWD/work/venv/Scripts/python.exe"
+scripts/00_verify_inputs.sh "/c/Program Files (x86)/Steam/steamapps/common/Jet Set Radio"
+scripts/01_fetch_pcrecomp.sh
+scripts/02_lift.sh
+cmd //c 'scripts\build_win32.cmd'       # build\win32\jsr-pc.exe
+```
+
+Run it with Steam running: `build\win32\jsr-pc.exe --game "<game folder>"`. The game
+runs with its own folder as the current directory, so it finds `steam_api.dll`,
+`steam_appid.txt` and its data there. `scripts\build_win32.cmd -DJSR_TRACE=ON`
+builds in pcrecomp's bring-up diagnostics (`jsr-pc --help` lists them).
+
 ## Read next
 
 - `AGENTS.md`: the brief for any agent working on this. Rules, current state, hosts, layout.
@@ -26,9 +45,8 @@ scripts/03_check.sh              # syntax check + pcrecomp difftest, vs data/bas
 ## Status (2026-11-04)
 
 The whole exe lifts with every instruction translated (M1 is done), and the generated
-C parses with 0 errors. Nothing has been linked or run yet. The next milestones are M2
-(first boot on Windows via `native32`) and M4a (Linux shim stubs), which can run in
-parallel.
+C parses with 0 errors. The Windows host for M2 (first boot via `native32`) is written
+but not yet built or run. M4a (Linux shim stubs) can run in parallel.
 
 The case study with the full analysis is a Claude doc: "Jet Set Radio PC:
 Reverse-Engineering Case Study".

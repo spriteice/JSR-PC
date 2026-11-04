@@ -71,9 +71,12 @@ README.md             human quickstart
 docs/FINDINGS.md      facts about the binary; read before touching the runtime
 docs/MILESTONES.md    the work, split into milestones and parallel workstreams
 docs/RUNTIME_SURFACE.md  all 150 imports and who answers them on each host
+CMakeLists.txt        the Windows host's build (MSVC x86)
+src/host_win32/       the native32 host: main(), the guest-module shims
 data/                 metadata only: hashes, pe_analysis.json, functions.json.gz,
                       identifiers.json, unimplemented_sites.json, baseline.json
-scripts/              00-03 reproduce the baseline; gcc-lm is a difftest wrapper
+scripts/              00-03 reproduce the baseline (PYTHON picks the interpreter);
+                      gcc-lm is a difftest wrapper; build_win32.cmd builds the host
 tools/                analysis helpers (pe_info, code_stats, fn_estimate,
                       unimplemented_report, runtime_surface)
 work/                 (gitignored) input copies, logs, generated C
@@ -84,8 +87,10 @@ third_party/pcrecomp  (gitignored) pinned toolchain
 
 - Host code lives in `src/host_win32/` (native32) and `src/host_linux/` (win32hle);
   shared shims in `src/shims/`, the renderer in `src/render/{vk,gl}/`.
-- Build with CMake, starting from `third_party/pcrecomp/templates/CMakeLists.txt.template`
-  (no ASLR, 8 MB stack, image base 0x00400000, entry VA 0x005D7D92).
+- Build with CMake (`CMakeLists.txt`, from pcrecomp's template): no ASLR, the host at
+  a fixed 0x20000000 with a 256 KB first-thread stack so the image's range at
+  0x00400000 stays free (`native32_hold_image`), and the game on a thread with a
+  64 MB stack. Entry VA 0x005D7D92.
 - Bring-up builds use `-DRECOMP_TRACE` with `runtime/recomp32/recomp_trace.c`
   (`--calltrace`, `--firsthit`, `--watch`, `--poison`, `--poke`).
 - Reference screenshots and traces from the Windows host go in `docs/reference/`
