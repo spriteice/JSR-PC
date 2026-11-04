@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "pcrecomp_commit": "4bbe6363dcb85deeaafff2f56e7e9a99607fd696",
+ "pcrecomp_commit": "b4f1cda461545996321daaac6346f8965eb1b6a7",
  "pe_analyze_seconds": 0.8,
  "disasm32": {
   "functions": 18102,
@@ -17,19 +17,20 @@
    "recomp_dispatch.c",
    "recomp_funcs.h"
   ],
-  "lines": 4036867,
+  "lines": 4036886,
   "size_mb": 189,
   "dispatch_entries": 18102,
   "icall_sites": 4639,
   "unimplemented_insns": 0,
   "functions_with_unimplemented": 0,
-  "seconds": 187
+  "seconds": 151
  },
  "syntax_check": {
-  "compiler": "gcc 13 -fsyntax-only (x86-64)",
+  "compiler": "gcc 13 -fsyntax-only -Werror=implicit-function-declaration -Werror=implicit-int (x86-64)",
   "files": 20,
   "errors": 0,
-  "seconds": 37
+  "warnings": 0,
+  "seconds": 53
  },
  "difftest": {
   "result": "392/392 match hardware, 0 known divergences, 0 failures",

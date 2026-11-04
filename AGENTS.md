@@ -24,7 +24,7 @@ No emulator, no Wine, no Proton.
    case), add a manual override in host code, or seed a missed function
    (`tools/disasm/seed_from_log.py`). Regenerate; do not patch `work/gen/`.
 4. **Pin the toolchain.** pcrecomp comes from the JSR-PC fork
-   ([spriteice/pcrecomp](https://github.com/spriteice/pcrecomp)), pinned to `4bbe636`. Moving the pin is its own
+   ([spriteice/pcrecomp](https://github.com/spriteice/pcrecomp)), pinned to `b4f1cda`. Moving the pin is its own
    change: rerun `scripts/02_lift.sh` and `03_check.sh`, and update `data/baseline.json`.
 5. **No copy protection to remove, and none to add.** This build has no SteamStub.
    If you meet a protected build, stop.
@@ -37,9 +37,9 @@ No emulator, no Wine, no Proton.
 | --- | --- |
 | Inputs | 4 files verified by SHA-256 (game exe, .NET launcher, `steam_api.dll`, `steam_w.dll`) |
 | Function recovery | 18,102 functions (2,460 thunks, 6,832 leaves); 77.2% byte coverage (most of the rest is 362 KB of int3 padding) |
-| Lift | 19 C files + dispatch table + header, 4.04 M lines, in 187 s; 4,639 indirect-call sites, all through an 18,102-entry dispatch table |
-| Unimplemented | 0 at `4bbe636`. At the original pin (`ef3f0da`) there were 7 in 4 functions: SSE2 `paddw` (xmm) x2 in each of `sub_005CF8EB`, `sub_005CF92E`, `sub_005CFBE6`, and `cli` x1 in `sub_0044B320` |
-| Compile | All 20 `.c` files pass `gcc -fsyntax-only` with 0 errors. **Not yet linked or run.** |
+| Lift | 19 C files + dispatch table + header, 4.04 M lines, in 151 s; 4,639 indirect-call sites, all through an 18,102-entry dispatch table |
+| Unimplemented | 0 at `b4f1cda`. At the original pin (`ef3f0da`) there were 7 in 4 functions: SSE2 `paddw` (xmm) x2 in each of `sub_005CF8EB`, `sub_005CF92E`, `sub_005CFBE6`, and `cli` x1 in `sub_0044B320` |
+| Compile | All 20 `.c` files pass `gcc -fsyntax-only` with implicit declarations as errors: 0 errors, 0 warnings. At `4bbe636`, MSVC 19.51 rejected 10 files (C2371: a call before the callee's declaration) and the link failed on one call to an address outside the image (`sub_CD0CE8FE`); both are fixed in the lifter |
 | Lifter self-test | `difftest.py`: 392/392 cases match hardware (needs `RECOMP_CC=scripts/gcc-lm` on Linux) |
 
 Reproduce it: `00_verify_inputs.sh <game dir>`, `01_fetch_pcrecomp.sh`, `02_lift.sh`, `03_check.sh`.
