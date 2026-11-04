@@ -11,7 +11,7 @@ game from Steam. The scripts verify it by hash and regenerate everything from it
 
 ```bash
 scripts/00_verify_inputs.sh "/path/to/steamapps/common/Jet Set Radio"
-scripts/01_fetch_pcrecomp.sh     # pinned to ef3f0da
+scripts/01_fetch_pcrecomp.sh     # the JSR-PC fork, pinned to 4bbe636
 scripts/02_lift.sh               # ~6 min: analyse, recover 18,102 functions, lift to C
 scripts/03_check.sh              # syntax check + pcrecomp difftest, vs data/baseline.json
 ```
@@ -25,10 +25,10 @@ scripts/03_check.sh              # syntax check + pcrecomp difftest, vs data/bas
 
 ## Status (2026-11-04)
 
-The whole exe has been lifted and the generated C parses with 0 errors. 7 instructions
-in 4 functions still need lifter support. Nothing has been linked or run yet. The next
-milestones are M1 (lifter gaps), M2 (first boot on Windows via `native32`) and M4a
-(Linux shim stubs), which can run in parallel.
+The whole exe lifts with every instruction translated (M1 is done), and the generated
+C parses with 0 errors. Nothing has been linked or run yet. The next milestones are M2
+(first boot on Windows via `native32`) and M4a (Linux shim stubs), which can run in
+parallel.
 
 The case study with the full analysis is a Claude doc: "Jet Set Radio PC:
 Reverse-Engineering Case Study".

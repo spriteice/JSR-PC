@@ -1,25 +1,4 @@
 {
- "tool": "pcrecomp lift32 @ ef3f0da",
- "sites": [
-  {
-   "function": "sub_005CF8EB",
-   "mnemonic": "paddw",
-   "count": 2
-  },
-  {
-   "function": "sub_005CF92E",
-   "mnemonic": "paddw",
-   "count": 2
-  },
-  {
-   "function": "sub_005CFBE6",
-   "mnemonic": "paddw",
-   "count": 2
-  },
-  {
-   "function": "sub_0044B320",
-   "mnemonic": "cli",
-   "count": 1
-  }
- ]
+ "tool": "pcrecomp lift32 @ 4bbe636",
+ "sites": []
 }

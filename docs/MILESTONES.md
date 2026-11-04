@@ -17,21 +17,20 @@ M0 Reproduce
 
 - Run `scripts/00_verify_inputs.sh <game dir>`, `01_fetch_pcrecomp.sh`, `02_lift.sh`,
   `03_check.sh`.
-- **Accept:** the numbers match `data/baseline.json`: 18,102 functions, 7 unlifted
-  instructions in 4 functions, 0 syntax errors, difftest 374/374. A different count
+- **Accept:** the numbers match `data/baseline.json`: 18,102 functions, 0 unimplemented
+  instructions, 0 syntax errors, difftest 392/392. A different count
   means a different input or pin; report it before going further.
 
-## M1: Close the lifter gaps (lifter agent)
+## M1: Close the lifter gaps (lifter agent) — done at `4bbe636`
 
-- `paddw` (MMX packed add of four 16-bit words, wrapping): add it to pcrecomp's
-  `lift32` next to the MMX ops it already has, or lift `sub_005CF8EB`, `sub_005CF92E`
-  and `sub_005CFBE6` with `lift32_cpu`. These sit together near 0x5CF000. Check
-  whether they are game code or statically linked library code (Vorbis, CRT) before
-  choosing.
-- `cli` in `sub_0044B320`: a privileged instruction that faults in user mode. Find out
-  whether it is reachable (an anti-debug or assert path is likely). Lift it as a call
-  into a host trap that logs and stops, never as a silent no-op.
-- Add difftest cases for every instruction you add.
+- `paddw` in `sub_005CF8EB`, `sub_005CF92E` and `sub_005CFBE6` is the SSE2 xmm form,
+  not MMX: lift32 already lifted MMX `paddw`, and `lift32_sse` covered wrapping packed
+  add and sub for the d and q lanes only. The fork covers every lane width (b, w, d, q).
+- `cli` in `sub_0044B320` lifts as `recomp_privileged()`, a host trap that logs the
+  address and stops, never a silent no-op (so do `sti` and `hlt` in Win32 code).
+  Whether its path is reachable is still open (`docs/FINDINGS.md`); if it is, the trap
+  names it on the first run.
+- 18 new difftest cases and `tools/lift/test_privileged.py` in the fork.
 - **Accept:** `tools/unimplemented_report.py work/gen` reports 0, and difftest passes with
   the new cases included.
 

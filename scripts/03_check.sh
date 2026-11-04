@@ -20,5 +20,5 @@ echo "  syntax errors: $errs (baseline 0)"
 
 echo "[2/2] difftest"
 ( cd "$pc" && RECOMP_CC="$here/scripts/gcc-lm" python3 tools/lift/difftest.py | tail -1 )
-echo "  baseline: 374/374 match hardware, 0 known divergences, 0 failures"
+echo "  baseline: 392/392 match hardware, 0 known divergences, 0 failures"
 [[ $errs -eq 0 ]]

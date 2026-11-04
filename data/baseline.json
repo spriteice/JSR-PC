@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "pcrecomp_commit": "ef3f0da6e08a8eb7a3f869273f3df071ca8d7373",
+ "pcrecomp_commit": "4bbe6363dcb85deeaafff2f56e7e9a99607fd696",
  "pe_analyze_seconds": 0.8,
  "disasm32": {
   "functions": 18102,
@@ -21,9 +21,9 @@
   "size_mb": 189,
   "dispatch_entries": 18102,
   "icall_sites": 4639,
-  "unimplemented_insns": 7,
-  "functions_with_unimplemented": 4,
-  "seconds": 175
+  "unimplemented_insns": 0,
+  "functions_with_unimplemented": 0,
+  "seconds": 187
  },
  "syntax_check": {
   "compiler": "gcc 13 -fsyntax-only (x86-64)",
@@ -32,7 +32,7 @@
   "seconds": 37
  },
  "difftest": {
-  "result": "374/374 match hardware, 0 known divergences, 0 failures",
+  "result": "392/392 match hardware, 0 known divergences, 0 failures",
   "note": "needs -lm on Linux: RECOMP_CC=scripts/gcc-lm"
  }
 }
