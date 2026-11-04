@@ -49,6 +49,8 @@ set_source_files_properties(${JSR_LIFTED} PROPERTIES COMPILE_OPTIONS "/W0")
 # The image is mapped at 0x00400000, so nothing of the host may be there:
 # the host loads at a fixed base well above the image's span, and its first
 # thread's stack is small so it fits below 0x00400000 (native32_hold_image).
-# The game itself runs on a thread with a large stack (main.c).
-target_link_options(jsr-pc PRIVATE /DYNAMICBASE:NO /BASE:0x20000000 /STACK:262144 /NXCOMPAT)
+# The game itself runs on a thread with a large stack (main.c). The base also
+# keeps clear of 0x20000000-0x21000000, which the game allocates for itself
+# (JSR_DCRAM_BASE in main.c).
+target_link_options(jsr-pc PRIVATE /DYNAMICBASE:NO /BASE:0x30000000 /STACK:262144 /NXCOMPAT)
 target_link_libraries(jsr-pc PRIVATE kernel32 user32)

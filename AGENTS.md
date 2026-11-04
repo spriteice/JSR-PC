@@ -88,9 +88,12 @@ third_party/pcrecomp  (gitignored) pinned toolchain
 - Host code lives in `src/host_win32/` (native32) and `src/host_linux/` (win32hle);
   shared shims in `src/shims/`, the renderer in `src/render/{vk,gl}/`.
 - Build with CMake (`CMakeLists.txt`, from pcrecomp's template): no ASLR, the host at
-  a fixed 0x20000000 with a 256 KB first-thread stack so the image's range at
+  a fixed 0x30000000 with a 256 KB first-thread stack so the image's range at
   0x00400000 stays free (`native32_hold_image`), and the game on a thread with a
   64 MB stack. Entry VA 0x005D7D92.
+- The game allocates 16 MB at exactly 0x20000000 for its Dreamcast-era main RAM
+  (`sub_00578EF0`) and maps 0x8C000000-based addresses into it (`sub_00597A30`).
+  Nothing of the host may be there; the host holds the range until the game runs.
 - Bring-up builds use `-DRECOMP_TRACE` with `runtime/recomp32/recomp_trace.c`
   (`--calltrace`, `--firsthit`, `--watch`, `--poison`, `--poke`).
 - Reference screenshots and traces from the Windows host go in `docs/reference/`

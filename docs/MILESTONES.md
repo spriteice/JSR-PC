@@ -56,6 +56,13 @@ M0 Reproduce
   didn't load, and reads the interface pointer without checking the result. The
   host now shims `DirectInput8Create` with its own handle. The game folder was
   unchanged.
+- **Second boot (`39a6334`, no stand-ins):** the game window opens and shows the
+  Loading screen, and stays there: no new code is reached after 10 s, reads stop at
+  22.9 MB, and the load state machine (`sub_004B9210`) waits for an overlapped read
+  that never finishes. The game allocates its 16 MB main RAM at exactly 0x20000000
+  (`sub_00578EF0`), where the host was linked, so the allocation failed and the
+  read into that range failed with its OVERLAPPED still pending. The host now
+  links at 0x30000000 and holds the range for the game until it runs.
 
 ## M3: Cross-check function recovery (analysis agent; needs Ghidra 11+)
 

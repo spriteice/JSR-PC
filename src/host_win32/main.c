@@ -31,6 +31,18 @@
 #define JSR_IMAGE_BASE 0x00400000u   /* its preferred base (data/pe_analysis.json) */
 #define JSR_ENTRY_VA   0x005D7D92u   /* its entry point: the MSVC CRT start-up */
 
+/* The game's main RAM, as on the Dreamcast it came from: sub_00578EF0
+ * allocates exactly this range, and sub_00597A30 maps 0x8C000000-based
+ * addresses into it. If something else is there, the allocation fails, the
+ * game carries on, and its overlapped reads into the range fail where it never
+ * looks: the first boots waited on the Loading screen for one of them, with
+ * the host itself linked at 0x20000000. So the host is linked elsewhere
+ * (CMakeLists.txt) and holds the range while it starts, so no DLL lands there,
+ * then hands it back as the game starts. */
+#define JSR_DCRAM_BASE 0x20000000u
+#define JSR_DCRAM_SIZE (16u << 20)
+static void* g_dcram_hold;
+
 /* The lifted code runs on a thread of its own with this much stack reserved.
  * A lifted frame is several times the original's, and the host itself is
  * linked with a small /STACK so its first thread's stack stays below the
@@ -197,6 +209,7 @@ static int find_game(const char* arg) {
 
 static DWORD WINAPI run_guest(void* unused) {
     (void)unused;
+    if (g_dcram_hold) VirtualFree(g_dcram_hold, 0, MEM_RELEASE);   /* the game's now */
     native32_call_guest(JSR_ENTRY_VA, 0, NULL);   /* the CRT start-up ends in ExitProcess */
     return 0;
 }
@@ -223,6 +236,12 @@ int main(int argc, char** argv) {
     if (!native32_hold_image(g_game_exe, JSR_IMAGE_BASE))
         fprintf(stderr, "jsr-pc: could not reserve 0x%08X before start-up; mapping anyway\n",
                 JSR_IMAGE_BASE);
+
+    g_dcram_hold = VirtualAlloc((void*)(uintptr_t)JSR_DCRAM_BASE, JSR_DCRAM_SIZE, MEM_RESERVE,
+                                PAGE_NOACCESS);
+    if (!g_dcram_hold)
+        fprintf(stderr, "jsr-pc: 0x%08X is taken (error %lu); the game's RAM will not map there\n",
+                JSR_DCRAM_BASE, GetLastError());
 
     SetCurrentDirectoryA(g_game_dir);
     recomp_install_crash_handler();   /* before native32_init: its handler must run first */
