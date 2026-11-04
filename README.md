@@ -18,9 +18,10 @@ scripts/03_check.sh              # syntax check + pcrecomp difftest, vs data/bas
 
 ## Building on Windows (the native32 host; not yet run)
 
-Needs Visual Studio 2022 or later, or its Build Tools, with the x86 C compiler;
-Git for Windows; and Python 3.10+ (a venv keeps pcrecomp's packages to itself).
-From Git Bash:
+Needs Visual Studio 2022 or later, or its Build Tools, with the x86 C compiler and
+the C++ CMake tools; Git for Windows; and Python 3.10+ (a venv keeps pcrecomp's
+packages to itself). `build_win32.cmd` uses Visual Studio's own CMake and Ninja,
+ahead of any other cmake on PATH such as MSYS2's or devkitPro's. From Git Bash:
 
 ```bash
 py -3.12 -m venv work/venv && export PYTHON="$PWD/work/venv/Scripts/python.exe"
