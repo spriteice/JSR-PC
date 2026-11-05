@@ -1,6 +1,7 @@
 # Agent brief: Jet Set Radio (PC, 2013) native port via pcrecomp
 
-Read this file first, then `docs/MILESTONES.md` for your task. Everything here was
+Read this file first, then `docs/MILESTONES.md` for your task. The rules for every change
+are in `docs/project-rules.md` and `docs/build-and-test-reference.md`. Everything here was
 verified on 2026-11-04 against the exact build in `data/inputs.sha256`.
 
 ## Mission
@@ -12,16 +13,20 @@ No emulator, no Wine, no Proton.
 
 ## Hard rules
 
-1. **No game material or lifted output leaves the user's machine.** Never commit, upload,
-   paste or quote: the game binaries, extracted assets (`.AFS`, `.ADX`, PNG UI art),
-   or anything under `work/` — the generated C is a derivative of SEGA's code.
-   Metadata is fine: addresses, function names like `sub_005CF8EB`, import names,
-   counts, logs that do not contain instruction text. Run
-   `python third_party/pcrecomp/tools/audit_repo.py .` before every push.
-2. **Bring your own game.** Every run starts with `scripts/00_verify_inputs.sh`. A file
-   that does not match the hash is a different build: stop and report it.
+1. **Game material and lifted output stay where they are.** They stay on the user's PC,
+   or in the cloud sandbox that holds them for its own work, and are never sent anywhere
+   else. Never commit, upload, paste or quote: the game binaries, extracted assets (`.AFS`,
+   `.ADX`, PNG UI art), screenshots of the game, or anything under `work/` — the generated
+   C is a derivative of SEGA's code. Metadata is fine: addresses, function names like
+   `sub_005CF8EB`, import names, counts, logs that do not contain instruction text.
+   Hand-written C that reimplements a game function is ours, under the rules in
+   `docs/project-rules.md` ("Game code"). Run
+   `python third_party/pcrecomp/tools/audit_repo.py .` before every commit.
+2. **Bring your own game.** Every new checkout and every lift starts with
+   `scripts/00_verify_inputs.sh`. A file that does not match the hash is a different
+   build: stop and report it.
 3. **Never hand-edit generated C.** Fix the lifter (in a pcrecomp fork, with a difftest
-   case), add a manual override in host code, or seed a missed function
+   case), add a named override or reimplementation in `src/game/`, or seed a missed function
    (`tools/disasm/seed_from_log.py`). Regenerate; do not patch `work/gen/`.
 4. **Pin the toolchain.** pcrecomp comes from the JSR-PC fork
    ([spriteice/pcrecomp](https://github.com/spriteice/pcrecomp)), pinned to `b4f1cda`. Moving the pin is its own
@@ -73,6 +78,9 @@ README.md             human quickstart
 docs/FINDINGS.md      facts about the binary; read before touching the runtime
 docs/MILESTONES.md    the work, split into milestones and parallel workstreams
 docs/RUNTIME_SURFACE.md  all 150 imports and who answers them on each host
+docs/project-rules.md    where code goes, how it's written, the checks before a commit
+docs/build-and-test-reference.md  building, running the game, tests, the review pack
+docs/release-checklist.md  the critical-bug gate and the release steps
 CMakeLists.txt        the Windows host's build (MSVC x86)
 src/host_win32/       the native32 host: main(), the guest-module shims
 data/                 metadata only: hashes, pe_analysis.json, functions.json.gz,
@@ -108,7 +116,8 @@ third_party/pcrecomp  (gitignored) pinned toolchain
 ## Conventions
 
 - Host code lives in `src/host_win32/` (native32) and `src/host_linux/` (win32hle);
-  shared shims in `src/shims/`, the renderer in `src/render/{vk,gl}/`.
+  shared shims in `src/shims/`, the renderer in `src/render/{vk,gl}/`, and hand-written
+  game code (overrides and reimplementations) in `src/game/`.
 - Build with CMake (`CMakeLists.txt`, from pcrecomp's template): no ASLR, the host at
   a fixed 0x30000000 with a 256 KB first-thread stack so the image's range at
   0x00400000 stays free (`native32_hold_image`), and the game on a thread with a
@@ -118,5 +127,6 @@ third_party/pcrecomp  (gitignored) pinned toolchain
   Nothing of the host may be there; the host holds the range until the game runs.
 - Bring-up builds use `-DRECOMP_TRACE` with `runtime/recomp32/recomp_trace.c`
   (`--calltrace`, `--firsthit`, `--watch`, `--poison`, `--poke`).
-- Reference screenshots and traces from the Windows host go in `docs/reference/`
-  (your own captures only; see rule 1 for anything that is game art).
+- Reference screenshots and traces from the Windows host stay on the PC, in
+  `Building\reference\` (`docs/build-and-test-reference.md`, "Running the game"). The repo
+  holds only what's drawn from them: counts, addresses and stage lists.
