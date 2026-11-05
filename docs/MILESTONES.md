@@ -9,6 +9,7 @@ M0 Reproduce
  ├─ M2 Windows boot (native32) ─┼─ M3 Recovery cross-check (uses M2 traces)
  └─ M4a Linux shim stubs ───────┘
                  M2 ─► M4b Linux boot (win32hle) ─► M5 Renderer ─► M6 Audio/input/Steam ─► M7 Ship
+                 M0 ─► M3b Function map and names (ongoing; feeds every later milestone)
 ```
 
 ---
@@ -83,6 +84,28 @@ M0 Reproduce
   then relift.
 - **Accept:** a written list of every function present in one catalog and missing from
   the other, each explained, and zero dispatch misses in M2's session after relifting.
+
+## M3b: Map and name functions (any agent; ongoing)
+
+- `tools/map_functions.py` writes `data/function_map.tsv` (see "Naming functions" in
+  `AGENTS.md`). It takes names from the functions' own log and assert strings, RTTI
+  vtables, `__FILE__` paths, the incremental-linking table and the import thunks, and
+  merges `data/names_manual.tsv`.
+- **First pass (2026-11-05, the catalogue at `b4f1cda`):** 404 of 8,772 function starts
+  named: 103 from their own strings, 292 from RTTI (`Class::vfN`; RTTI names classes,
+  not members) and 9 by hand from what M2 found (the file reads, `MapDCAddress`,
+  `Input_Init`). 249 entries are placed in 24 source files. Nearly all are in the
+  Katana framework, Ninja, Shinobi and the PC layer, from 0x544000 on. The Dreamcast
+  game code, 5,126 starts below 0x544000, has 2: `markGraffitiUsed` and `Load_Step`.
+- Next, in order:
+  1. The lifter writes the names into the generated C (a pcrecomp fork change).
+  2. A replacement path: a listed function is left out of the lift and written by hand
+     in `src/`, then compared with the lifted version.
+  3. The C runtime and other linked libraries by signature (Ghidra's Function ID, with M3).
+  4. The game code by role: what each function calls (Ninja draws, file reads, sound)
+     and the function-pointer tables it sits in (2,939 code pointers in data).
+- **Accept (each pass):** the script runs on the verified exe, every manual name has a
+  note, the counts are recorded here, and `audit_repo.py` reports CLEAN.
 
 ## M4a: Linux shim stubs (Linux agent; can start right after M0)
 

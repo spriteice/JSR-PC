@@ -1,0 +1,15 @@
+# Names we assign to functions in jetsetradio.exe. tools/map_functions.py merges them into
+# data/function_map.tsv. A name here replaces an RTTI slot name (Class::vfN); one that differs from the name
+# a function's own string gives stops the script. One row per function, tab-separated:
+# address, name, module (the source file if known, else empty), note. The note says what the
+# function does that earns the name, and where that was seen. See "Naming functions" in AGENTS.md.
+address	name	module	note
+0x004B9210	Load_Step		Advances a file load by one state each frame; state 4 waits while File_GetStatus is 2 (reading). M2, second boot (call trace of the Loading hang)
+0x00547FC0	Audio_LoadMidiBanks		References the paths of the MIDI sound banks' Ogg files (MIDI/*_seq/*.ogg); the body of Audio_LoaderThread. M2, second boot
+0x005487D0	Audio_LoaderThread		Thread procedure: runs Audio_LoadMidiBanks, clears the busy flag at 0x009CDD7E, returns. M2, second boot
+0x00591590	Input_Init		Input set-up: GetModuleHandleA(NULL), then DirectInput8Create, then the device's methods; never checks the HRESULT. M2, first boot
+0x00594B60	File_GetSectorsRead		Returns the sector count of the last completed read (+0x10) for a file slot, or 0 for a closed slot. Shape of CRI's ADXF_GetNumReadSct, unconfirmed
+0x00594B80	File_GetStatus		Returns a file slot's status (+0x1C): 2 while reading, 3 when the read is done; 0 for a closed slot. Shape of CRI's ADXF_GetStat, unconfirmed
+0x00594BA0	File_ReadAsync		Starts an overlapped ReadFile of N 2,048-byte sectors into a buffer passed through MapDCAddress, sets the status to 2, returns N; ignores ReadFile's result. M2, second boot
+0x00595040	File_PollReads		For each of the 16 file slots that is reading and whose OVERLAPPED.Internal is no longer STATUS_PENDING: GetOverlappedResult, advance the position, set the status to 3, run the slot's callback. M2, second boot
+0x00597A30	MapDCAddress		Maps a Dreamcast main-RAM address (0x8C000000-0x8CFFFFFF) into the 16 MB block that CApplication::MapDCMemory allocates at 0x20000000; any other address passes through. M2, second boot

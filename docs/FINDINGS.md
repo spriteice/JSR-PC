@@ -57,6 +57,25 @@ is reproduced here. Raw metadata is in `data/`.
   EH support.
 - Not yet checked: run-time code generation or self-patching. Watch for writes to `.text`
   and calls into heap memory during M2.
+- The exe was linked incrementally. `.text` starts with a table of 4,912 five-byte
+  `jmp` stubs (0x401005 to 0x406FF0, in no useful order), and direct calls and vtable
+  slots go through them. Of the catalogue's 18,102 entries, 4,912 are these stubs,
+  4,376 are aliases (labels inside another body: shared epilogues, switch arms, EH
+  funclets), 42 are other thunks and 8,772 are function starts.
+
+## Where the code lives
+
+From the functions that pass a `__FILE__` path or their own name (`data/function_map.tsv`):
+
+| Range | What | Anchors |
+| --- | --- | --- |
+| 0x40CFF0 to 0x544000 | the Dreamcast game code (C) as far as the anchors show, 5,126 starts | `JET\SRCGAME\GAMECLEAR.C` at 0x4C2530 |
+| 0x544320 to 0x544BC0 | the game's asm helpers | `JET\OTHERS\asmfuncs.cpp` |
+| 0x544E70 to 0x58DA30 | Katana framework: audio, saves, Steam, subtitles, system, video, Vorbis, fonts | `KATANA\FRAMEWORK\*.cpp` (9 files) |
+| 0x594C60 to 0x596970 | Shinobi: ADX files and streams, saves, GD-ROM, pads | `KATANA\SHINOBI\*.cpp` (5 files) |
+| 0x598CB0 to 0x5B9D50 | Ninja: chunk models, sprites, textures, stubs | `KATANA\NINJA\*.cpp` (7 files) |
+| 0x5BA1A0 to 0x5CF340 | the C++ UI (menus, dialogs, leaderboards) | `UI\DlgBase.cpp`, RTTI |
+| 0x5CF380 on | import thunks, then the C runtime | `CorExitProcess`, `FlsAlloc` lookups |
 
 ## Open questions (assign as found)
 

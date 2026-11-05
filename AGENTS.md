@@ -36,7 +36,8 @@ No emulator, no Wine, no Proton.
 | Stage | Result |
 | --- | --- |
 | Inputs | 4 files verified by SHA-256 (game exe, .NET launcher, `steam_api.dll`, `steam_w.dll`) |
-| Function recovery | 18,102 functions (2,460 thunks, 6,832 leaves); 77.2% byte coverage (most of the rest is 362 KB of int3 padding) |
+| Function recovery | 18,102 entries: 8,772 function starts, 4,376 aliases (labels inside another body), 4,912 incremental-linking stubs and 42 other thunks; 77.2% byte coverage (most of the rest is 362 KB of int3 padding) |
+| Function map | `data/function_map.tsv`: 404 of the 8,772 starts named (103 from their own log strings, 292 from RTTI vtables, 9 by hand), 249 placed in 24 source files. The Dreamcast game code (5,126 starts) has 2 |
 | Lift | 19 C files + dispatch table + header, 4.04 M lines, in 151 s; 4,639 indirect-call sites, all through an 18,102-entry dispatch table |
 | Unimplemented | 0 at `b4f1cda`. At the original pin (`ef3f0da`) there were 7 in 4 functions: SSE2 `paddw` (xmm) x2 in each of `sub_005CF8EB`, `sub_005CF92E`, `sub_005CFBE6`, and `cli` x1 in `sub_0044B320` |
 | Compile | All 20 `.c` files pass `gcc -fsyntax-only` with implicit declarations as errors: 0 errors, 0 warnings. At `4bbe636`, MSVC 19.51 rejected 10 files (C2371: a call before the callee's declaration) and the link failed on one call to an address outside the image (`sub_CD0CE8FE`); both are fixed in the lifter |
@@ -75,14 +76,34 @@ docs/RUNTIME_SURFACE.md  all 150 imports and who answers them on each host
 CMakeLists.txt        the Windows host's build (MSVC x86)
 src/host_win32/       the native32 host: main(), the guest-module shims
 data/                 metadata only: hashes, pe_analysis.json, functions.json.gz,
-                      identifiers.json, unimplemented_sites.json, baseline.json
+                      identifiers.json, unimplemented_sites.json, baseline.json,
+                      function_map.tsv (generated), names_manual.tsv (by hand)
 scripts/              00-03 reproduce the baseline (PYTHON picks the interpreter);
                       gcc-lm is a difftest wrapper; build_win32.cmd builds the host
 tools/                analysis helpers (pe_info, code_stats, fn_estimate,
-                      unimplemented_report, runtime_surface)
+                      unimplemented_report, runtime_surface, map_functions)
 work/                 (gitignored) input copies, logs, generated C
 third_party/pcrecomp  (gitignored) pinned toolchain
 ```
+
+## Naming functions
+
+- `data/function_map.tsv` has one row per catalogue entry: address, kind, name, source
+  file, evidence. `tools/map_functions.py` writes it from the verified exe; never edit
+  it by hand. Rerun it after a change to `data/names_manual.tsv` or to the catalogue
+  (a pin move), and commit the result with the change.
+- To name a function, add a row to `data/names_manual.tsv`: address, name, source file
+  if known, and a note saying what the function does that earns the name and where
+  you saw it (a call, a constant, a trace). A manual name replaces an RTTI slot name
+  (`Class::vfN`); one that differs from the name a function's own string gives stops
+  the script with an error.
+- Names the exe spells out keep its spelling (`njCnkDrawModel`, `AudioPlayback::OggPlay`).
+  Names we assign are `Area_Verb` in CamelCase (`File_ReadAsync`, `Input_Init`). Never
+  give an SDK name (`nj`, `gdFs`, `ADX`, `bu`, `pd`) unless a string or a match proves it;
+  put the likely SDK name in the note instead.
+- Notes describe behaviour. They never quote code, and never quote a string from the
+  exe other than a name or a path (rule 1).
+- A `mentions=` row is a name string the script could not attribute. Settle it by hand.
 
 ## Conventions
 
