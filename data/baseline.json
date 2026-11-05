@@ -1,6 +1,6 @@
 {
  "date": "2026-11-05",
- "pcrecomp_commit": "84af6602e25780a1df7733360a046c7adc91507e",
+ "pcrecomp_commit": "2290a86225223709b028b6c18250c324e66e916b",
  "pe_analyze_seconds": 0.8,
  "disasm32": {
   "functions": 18102,

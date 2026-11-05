@@ -7,7 +7,7 @@ set -euo pipefail
 py="${PYTHON:-python3}"
 here="$(cd "$(dirname "$0")/.." && pwd)"
 REMOTE=https://github.com/spriteice/pcrecomp
-PIN=84af6602e25780a1df7733360a046c7adc91507e
+PIN=2290a86225223709b028b6c18250c324e66e916b
 dst="$here/third_party/pcrecomp"
 if [[ ! -d "$dst/.git" ]]; then
   git init -q "$dst"

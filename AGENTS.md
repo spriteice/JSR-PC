@@ -29,7 +29,7 @@ No emulator, no Wine, no Proton.
    case), add a named override or reimplementation in `src/game/`, or seed a missed function
    (`tools/disasm/seed_from_log.py`). Regenerate; do not patch `work/gen/`.
 4. **Pin the toolchain.** pcrecomp comes from the JSR-PC fork
-   ([spriteice/pcrecomp](https://github.com/spriteice/pcrecomp)), pinned to `84af660`. Moving the pin is its own
+   ([spriteice/pcrecomp](https://github.com/spriteice/pcrecomp)), pinned to `2290a86`. Moving the pin is its own
    change: rerun `scripts/02_lift.sh` and `03_check.sh`, and update `data/baseline.json`.
 5. **No copy protection to remove, and none to add.** This build has no SteamStub.
    If you meet a protected build, stop.
@@ -44,7 +44,7 @@ No emulator, no Wine, no Proton.
 | Function recovery | 18,102 entries: 8,772 function starts, 4,376 aliases (labels inside another body), 4,912 incremental-linking stubs and 42 other thunks; 77.2% byte coverage (most of the rest is 362 KB of int3 padding) |
 | Function map | `data/function_map.tsv`: 547 of the 8,772 starts named (292 from RTTI vtables, 143 constructors and destructors from the vtable they store, 103 from their own log strings, 9 by hand), and 607 stubs and thunks, each named after the function it reaches; 249 starts placed in 24 source files. The Dreamcast game code (5,126 starts) has 2 |
 | Lift | 19 C files + dispatch table + header, 4.10 M lines; 4,639 indirect-call sites, all through an 18,102-entry dispatch table. The 1,154 entries the map names carry that name in the C, each with a header that counts its callers |
-| Unimplemented | 0 at `84af660`. At the original pin (`ef3f0da`) there were 7 in 4 functions: SSE2 `paddw` (xmm) x2 in each of `sub_005CF8EB`, `sub_005CF92E`, `sub_005CFBE6`, and `cli` x1 in `sub_0044B320` |
+| Unimplemented | 0 at `2290a86`. At the original pin (`ef3f0da`) there were 7 in 4 functions: SSE2 `paddw` (xmm) x2 in each of `sub_005CF8EB`, `sub_005CF92E`, `sub_005CFBE6`, and `cli` x1 in `sub_0044B320` |
 | Compile | All 20 `.c` files pass `gcc -fsyntax-only` with implicit declarations as errors: 0 errors, 0 warnings. At `4bbe636`, MSVC 19.51 rejected 10 files (C2371: a call before the callee's declaration) and the link failed on one call to an address outside the image (`sub_CD0CE8FE`); both are fixed in the lifter |
 | Lifter self-test | `difftest.py`: 392/392 cases match hardware (needs `RECOMP_CC=scripts/gcc-lm` on Linux) |
 | Windows run | M2 is done at `10f62e5` (MSVC 19.51). The game reaches gameplay, writes saves and loads them back; a 20.9-minute session exited with code 0, with no unresolved calls and no crash dumps |
