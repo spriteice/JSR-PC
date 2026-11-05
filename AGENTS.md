@@ -100,10 +100,11 @@ third_party/pcrecomp  (gitignored) pinned toolchain
 ## Naming functions
 
 - `data/function_map.tsv` has one row per catalogue entry: address, kind, name, source
-  file, evidence. `tools/map_functions.py` writes it from the verified exe; never edit
-  it by hand. Rerun it after a change to `data/names_manual.tsv` or to the catalogue
-  (a pin move), and commit the result with the change. `scripts/02_lift.sh` stops if
-  the committed map is out of date.
+  file, evidence, target, and for a function that is to be replaced, its calling
+  convention and argument count. `tools/map_functions.py` writes it from the verified
+  exe; never edit it by hand. Rerun it after a change to `data/names_manual.tsv` or to
+  the catalogue (a pin move), and commit the result with the change.
+  `scripts/02_lift.sh` stops if the committed map is out of date.
 - The lifted C takes its names from the map and nowhere else: `02_lift.sh`'s last step
   runs pcrecomp's `name_lift.py --known-only`. The C name is the map's name with `::`
   as `__` (`AudioPlayback__OggPlay`) and `~` as `destructor_`; a name used twice gets
@@ -111,7 +112,10 @@ third_party/pcrecomp  (gitignored) pinned toolchain
   counting calls through its incremental-linking stub.
 - To name a function, add a row to `data/names_manual.tsv`: address, name, source file
   if known, and a note saying what the function does that earns the name and where
-  you saw it (a call, a constant, a trace). A manual name replaces an RTTI slot name
+  you saw it (a call, a constant, a trace). Before a function is reimplemented or
+  overridden, its row also gets `call` (cdecl, stdcall, thiscall or fastcall) and
+  `args` (its 4-byte stack arguments, not counting `this` in ecx or a fastcall's ecx
+  and edx), and the note says what shows them. A manual name replaces an RTTI slot name
   (`Class::vfN`) or a constructor or destructor name; one that differs from the name
   a function's own string gives stops the script with an error.
 - A function that stores a class's vtable into the object it is given is that class's

@@ -34,15 +34,20 @@ Columns:
             mentions=A|B  name strings the function passes that could not be
                     attributed (several functions pass them, or it passes several)
   target    for ilt, thunk and import, where it jumps; for alias, the parent
+  call      the calling convention, from data/names_manual.tsv: cdecl, stdcall,
+            thiscall or fastcall. A function gets it before it is reimplemented
+            or overridden (docs/project-rules.md, Function map 6)
+  args      with call: how many 4-byte arguments it takes on the stack. A
+            thiscall's `this` (ecx) and a fastcall's ecx and edx are not counted
 
-Empty fields at the end of a row are left off, so a row can have fewer than six.
+Empty fields at the end of a row are left off, so a row can have fewer than eight.
 
 Names for ilt and thunk rows are j_ plus the target's name. Import rows are named
 j_ plus the import, so a name never collides with the real Windows function.
 
 Names a person or agent assigns go in data/names_manual.tsv
-(address, name, module, note), never in this file: rerunning the script
-regenerates it and merges them in.
+(address, name, module, call, args, note), never in this file: rerunning the
+script regenerates it and merges them in.
 
     python3 -I tools/map_functions.py <game dir or jetsetradio.exe> [-o data/function_map.tsv]
                                       [--known work/known_names.txt]
@@ -80,7 +85,8 @@ NAME_RES = [
 PATH_RE = re.compile(r"[A-Za-z0-9_]+(?:\\[A-Za-z0-9_]+)*\\[A-Za-z0-9_]+\.(?:c|cpp)", re.I)
 MANUAL_NAME_RE = re.compile(r"[A-Za-z_~][A-Za-z0-9_:~]*")
 
-COLUMNS = ["address", "kind", "name", "module", "evidence", "target"]
+COLUMNS = ["address", "kind", "name", "module", "evidence", "target", "call", "args"]
+CALLS = ("cdecl", "stdcall", "thiscall", "fastcall")
 
 
 def is_name(s):
@@ -382,12 +388,16 @@ def read_manual(path):
             if not line.strip() or line.startswith("#") or line.startswith("address\t"):
                 continue
             cols = line.rstrip("\n").split("\t")
-            if len(cols) < 4 or not cols[3].strip():
-                sys.exit(f"{path}:{n}: need address, name, module, note (the note says why)")
+            if len(cols) < 6 or not cols[5].strip():
+                sys.exit(f"{path}:{n}: need address, name, module, call, args, note (the note says why)")
             addr = int(cols[0], 16)
             if not MANUAL_NAME_RE.fullmatch(cols[1]):
                 sys.exit(f"{path}:{n}: {cols[1]!r} is not a usable name")
-            out[addr] = (cols[1], cols[2])
+            call, args = cols[3], cols[4]
+            if (call or args) and (call not in CALLS or not args.isdigit()):
+                sys.exit(f"{path}:{n}: call and args go together: one of {', '.join(CALLS)}, "
+                         f"and a count (got {call!r}, {args!r})")
+            out[addr] = (cols[1], cols[2], call, args)
     return out
 
 
@@ -400,7 +410,7 @@ def build(exe, catalogue, manual):
     for f in funcs:
         a = f["address"]
         row = dict(address=a, kind=f.get("entry_kind", "start"), name="", module="",
-                   evidence=[], target=None)
+                   evidence=[], target=None, call="", args="")
         if a in ilt:
             row["kind"], row["target"] = "ilt", ilt[a]
         elif f.get("is_thunk"):
@@ -471,7 +481,7 @@ def build(exe, catalogue, manual):
                     rows[x]["module"] = m
                     rows[x]["evidence"].append("between")
 
-    for a, (name, module) in manual.items():
+    for a, (name, module, call, args) in manual.items():
         r = rows.get(a)
         if r is None:
             sys.exit(f"data/names_manual.tsv: 0x{a:08X} is not in the catalogue")
@@ -482,6 +492,10 @@ def build(exe, catalogue, manual):
         r["name"] = name
         if module:
             r["module"] = module
+        if call and r["kind"] != "start":
+            sys.exit(f"data/names_manual.tsv: 0x{a:08X} is not a function start ({r['kind']}); "
+                     f"a calling convention belongs to the function it reaches")
+        r["call"], r["args"] = call, args
         r["evidence"].insert(0, "manual")
 
     # A stub is named after the first named entry its chain of jumps reaches
@@ -519,6 +533,7 @@ def write(rows, out, exe_hash):
                 f"0x{r['address']:08X}", r["kind"], r["name"], r["module"],
                 ";".join(r["evidence"]),
                 f"0x{r['target']:08X}" if r["target"] is not None else "",
+                r["call"], r["args"],
             ]).rstrip("\t") + "\n")
 
 
