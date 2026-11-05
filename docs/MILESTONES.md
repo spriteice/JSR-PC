@@ -84,6 +84,45 @@ M0 Reproduce
   then relift.
 - **Accept:** a written list of every function present in one catalog and missing from
   the other, each explained, and zero dispatch misses in M2's session after relifting.
+- **Cross-check (2026-11-05, Ghidra 12.2):** `scripts/ghidra_crosscheck.sh <Ghidra dir>`
+  redoes it in about 4 minutes. Ghidra analyses the exe, `ExportFunctions.java` and
+  `DumpBounds.java` export its functions, and `score_recovery.py` scores the catalogue
+  against them. `data/recovery_crosscheck.tsv` lists the 3,519 addresses where the two
+  differ, each with what Ghidra has there, what in the exe points at it, and a reason;
+  none is unexplained. Ghidra has 10,994 functions to our 13,726 starts, and 10,696
+  agree: recall 97.3%, precision 77.9%. 97.4% of those end where Ghidra's do; the
+  other 282 end short at our next start (155) or run on past Ghidra's end (127).
+  - **Our 3,030 extra starts:** 2,058 incremental-linking stubs and 496 functions
+    reached only through them (Ghidra decodes only the stubs it reaches, and makes a
+    function of none); 77 SEH filters and `__except` and `__finally` blocks in the C
+    runtime, named by scope tables Ghidra doesn't read; 150 functions named by a pushed
+    address or a value in data, which Ghidra references without making a function; 168
+    false starts inside Ghidra's functions (94 jump labels, 61 data values that equal an
+    instruction's address, 12 chance E8 and E9 bytes and a prologue), each lifted inside
+    the function before it too, as the lifted C shows, so the lift loses nothing; 67
+    found only by our scans, or called only from such code; and 14 data decoded as
+    code.
+    `sub_0044B320` is one of the 14: its `cli` (M1) is the first byte of a switch
+    table, so it never runs.
+  - **Our 191 aliases outside Ghidra's functions:** 127 C++ EH handler stubs, 37
+    entries of functions Ghidra doesn't have, and 27 in code Ghidra gives another
+    function or leaves past a function's end.
+  - **Ghidra's 298 starts that aren't ours:** 287 C++ EH funclets, which the catalogue
+    keeps as entries of the function that installs them; 6 labels inside one of our
+    bodies; 4 that nothing references; and one gap, 0x005E0178. It is a C runtime
+    function's `catch (...)` block, straight after its `try` body and so inside that
+    body's decode, and no entry was made for it: a throw caught there would stop on
+    "funclet is not lifted". The other 287 C++ funclets and all 105 SEH ones are
+    entries. disasm32 reads the tables already but only turned existing entries into
+    aliases; a fork fix that adds such a funclet as an alias adds this one entry and
+    changes nothing else in the catalogue.
+  - **Dispatch misses:** none in M2's sessions or in this thread's runs, so nothing
+    was seeded.
+  - For naming (M3b): the 168 false starts are `start` rows in the map and are not
+    functions, and 0x0045C2B0, which an incremental-linking stub names, is a function
+    the catalogue keeps as an alias. Ghidra's Function ID names 805 functions, 94 of
+    them ambiguous (`FID_conflict`), in `work/ghidra/jetsetradio_functions.txt`.
+- Next: the disasm32 fix and a relift, after review.
 
 ## M3b: Map and name functions (any agent; ongoing)
 

@@ -54,7 +54,15 @@ is reproduced here. Raw metadata is in `data/`.
 - 1,652 indirect calls and 655 indirect jumps found by a linear sweep. pcrecomp routes
   4,639 `RECOMP_ICALL` sites through its dispatch table.
 - 414 C++ EH stubs and funclets: the PC layer uses C++ exceptions, so Linux needs guest
-  EH support.
+  EH support. Their tables name 128 handler stubs and 288 funclets. One funclet, the
+  `catch (...)` block at 0x005E0178 in a C runtime function, sits inside its function's
+  body and has no catalogue entry (M3). One handler stub, the C runtime's at
+  0x00613FC2, checks the /GS cookie before it loads its FuncInfo; native32's eh32
+  recognises a C++ frame only by a handler that loads it first, so it would pass over
+  that frame.
+- SEH: 80 `_except_handler4` scope tables name 105 filters and `__except` and
+  `__finally` blocks, all in the C runtime, and all are catalogue entries. eh32
+  handles C++ frames only.
 - Not yet checked: run-time code generation or self-patching. Watch for writes to `.text`
   and calls into heap memory during M2.
 - The exe was linked incrementally. `.text` starts with a table of 4,912 five-byte
@@ -82,5 +90,7 @@ From the functions that pass a `__FILE__` path or their own name (`data/function
 - [ ] Where does the game read `setup.dat` from, and what is its format?
 - [ ] Which codec feeds `PShader_YUV` (in-house, or a linked library)?
 - [ ] Are the `paddw` functions near 0x5CF000 game code or a linked library?
-- [ ] Is `sub_0044B320`'s `cli` path reachable?
+- [x] Is `sub_0044B320`'s `cli` path reachable? No: 0x0044B320 is the first entry of a
+  switch table, decoded as code because a value in `.data` equals its address, and
+  nothing calls it (M3).
 - [ ] Does `SteamRemoteStorage` hold the only copy of saves (cloud), or is there a local file too?

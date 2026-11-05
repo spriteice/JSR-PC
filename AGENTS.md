@@ -86,13 +86,16 @@ CMakeLists.txt        the Windows host's build (MSVC x86)
 src/host_win32/       the native32 host: main(), the guest-module shims
 data/                 metadata only: hashes, pe_analysis.json, functions.json.gz,
                       identifiers.json, unimplemented_sites.json, baseline.json,
-                      function_map.tsv (generated), names_manual.tsv (by hand)
+                      function_map.tsv (generated), names_manual.tsv (by hand),
+                      recovery_crosscheck.tsv (generated: M3, against Ghidra)
 scripts/              00-03 reproduce the baseline (PYTHON picks the interpreter);
                       gcc-lm is a difftest wrapper; build_win32.cmd builds the host;
-                      ci_checks.sh and ci_win32.cmd are CI's two jobs
+                      ci_checks.sh and ci_win32.cmd are CI's two jobs;
+                      ghidra_crosscheck.sh redoes M3's cross-check
 .github/workflows/    ci.yml: CI on every push to main, with no game files
 tools/                analysis helpers (pe_info, code_stats, fn_estimate,
-                      unimplemented_report, runtime_surface, map_functions)
+                      unimplemented_report, runtime_surface, map_functions,
+                      recovery_crosscheck); tools/ghidra/ holds our Ghidra scripts
 work/                 (gitignored) input copies, logs, generated C
 third_party/pcrecomp  (gitignored) pinned toolchain
 ```
