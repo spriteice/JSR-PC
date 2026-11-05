@@ -87,7 +87,9 @@ data/                 metadata only: hashes, pe_analysis.json, functions.json.gz
                       identifiers.json, unimplemented_sites.json, baseline.json,
                       function_map.tsv (generated), names_manual.tsv (by hand)
 scripts/              00-03 reproduce the baseline (PYTHON picks the interpreter);
-                      gcc-lm is a difftest wrapper; build_win32.cmd builds the host
+                      gcc-lm is a difftest wrapper; build_win32.cmd builds the host;
+                      ci_checks.sh and ci_win32.cmd are CI's two jobs
+.github/workflows/    ci.yml: CI on every push to main, with no game files
 tools/                analysis helpers (pe_info, code_stats, fn_estimate,
                       unimplemented_report, runtime_surface, map_functions)
 work/                 (gitignored) input copies, logs, generated C

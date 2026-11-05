@@ -23,8 +23,7 @@ Where this file and the repo's own docs or scripts disagree (README.md,
 ## Where the work runs
 
 - **The cloud,** a thread's sandbox: the code, the diagnosis, the lift and
-  `03_check.sh`, syntax checks with mingw-w64, CI's jobs run by hand, and
-  every commit and push.
+  `03_check.sh`, CI's Linux job (CI), and every commit and push.
 - **My Windows PC,** through a Remote Control session, in `Building\` in my
   JSR-PC folder there (the shared folder's `building-on-pc/README.md` gives
   its path and what's installed): the lift for Windows builds, the MSVC build,
@@ -80,9 +79,9 @@ The game may run on the PC for bring-up and tests, on these conditions:
 ### When the PC is busy
 
 While another thread has the PC, work that doesn't need Windows goes on in
-the sandbox: the code, the lift and its check, and a mingw-w64 i686 gcc
-syntax check of changed host code, which the review pack names as a stand-in
-for the MSVC build. The MSVC build, game runs and anything else that needs
+the sandbox: the code, the lift and its check, and CI's Linux job, whose
+mingw-w64 i686 syntax check of `src/` the review pack names as a stand-in for
+the MSVC build. The MSVC build, game runs and anything else that needs
 Windows waits for the claim.
 
 ## Building
@@ -122,11 +121,28 @@ why.
 
 ## CI
 
-None yet. When `.github/workflows/ci.yml` exists, GitHub runs it on every push
-with none of the game's files, and this section lists its jobs and how to run
-each in the sandbox before a commit. Until then, the review pack's CI line
-reads "CI: none yet", and the checks of docs/project-rules.md ("Before every
-commit") are run by hand.
+`.github/workflows/ci.yml` runs on every push to `main`, with none of the
+game's files. Each job is a script, so the same checks run before a commit.
+
+- **Linux** (Ubuntu 24.04, Python 3.12): `scripts/01_fetch_pcrecomp.sh`, then
+  `scripts/ci_checks.sh`. That is the audit over the whole history, which also
+  fails on any image under `docs/`; pcrecomp's difftest at the pin (392
+  cases); a compile of every Python file in `tools/`; and a mingw-w64 i686
+  syntax check of `src/` at `-Wall -Werror`, with and without
+  `RECOMP_TRACE`. In the sandbox, install `gcc-mingw-w64-i686` and run the
+  same two scripts; it takes under a minute.
+- **Windows** (Windows Server 2022, MSVC x86): `scripts/01_fetch_pcrecomp.sh`,
+  then `scripts\ci_win32.cmd`. It compiles `src/` and pcrecomp's native32
+  runtime with the files, defines and warning level of `CMakeLists.txt`, with
+  and without `RECOMP_TRACE`, without linking: the lifted C needs the game, so
+  the full build is still `scripts\build_win32.cmd` on my PC. It can't run in
+  the sandbox. On my PC it runs in `Building\src`, like a build.
+
+Before a commit, the Linux job runs in the sandbox, and the Windows job on my
+PC when the commit changes what it compiles (docs/project-rules.md, "Before
+every commit"). The review pack gives each job's result and log, or says
+which job GitHub runs first on the push. The pip packages are the latest, as
+on my PC, until they're pinned. Tests join the Linux job when `tests/` exists.
 
 ## Delivery
 

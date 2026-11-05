@@ -33,9 +33,9 @@ pack"), then wait for my approval. A pre-approved thread doesn't wait
 
    | The commit changes | Check |
    |---|---|
-   | Anything | CI passes for the commit's exact tree (docs/build-and-test-reference.md, "CI"). None yet: until `.github/workflows/ci.yml` exists, the pack says "CI: none yet" and runs the checks below by hand. |
+   | Anything | CI passes for the commit's exact tree (docs/build-and-test-reference.md, "CI"): its Linux job, `scripts/ci_checks.sh`, in the sandbox, and its Windows job as the next row says. |
    | `tools/`, `data/`, or a script that makes the lift | `scripts/02_lift.sh` and `03_check.sh`, with every number against `data/baseline.json` |
-   | `src/`, `CMakeLists.txt`, or `scripts/build_win32.cmd` | A compile with MSVC x86: CI's Windows job, or until CI exists, `scripts\build_win32.cmd` on my PC. While another thread has the PC, a mingw-w64 i686 gcc syntax check of the changed files in the sandbox stands in, and the pack says so. |
+   | `src/`, `CMakeLists.txt`, `scripts/build_win32.cmd`, `scripts/ci_win32.cmd`, or the pcrecomp pin | A compile with MSVC x86: CI's Windows job, `scripts\ci_win32.cmd`, and `scripts\build_win32.cmd`, on my PC. While another thread has the PC, the mingw-w64 i686 syntax check in `ci_checks.sh` stands in, and the pack says so. Any other commit's Windows job runs first on GitHub, on the push. |
    | `tests/` or code a test covers | The tests pass (docs/build-and-test-reference.md, "Tests"). None yet: there is no `tests/` until the first test is added. |
    | The pcrecomp pin | Where code goes, 4: the lift and the check run again, and `data/baseline.json`'s diff |
    | What the game runs (anything but `docs/`, `tests/`, the function map's two files, and the top-level Markdown files) | A test build of that tree, and its test steps, on its device (docs/build-and-test-reference.md, "Test checklist") |
@@ -415,7 +415,8 @@ The thread's first reply:
 
 A commit is made and pushed only when all of these pass for its exact tree:
 
-1. **The checks** of Before every commit, CI among them.
+1. **The checks** of Before every commit, CI among them, with its Windows job
+   on my PC.
 2. **For a fix, its regression test,** failing without the fix and passing
    with it. For a reimplementation, its dual run.
 3. **For a change to what the game runs:** a test build of that tree, and

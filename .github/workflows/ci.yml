@@ -1,0 +1,55 @@
+# JSR-PC's CI. It runs on every push to main, and needs none of the game's
+# files: what's tracked, pcrecomp's lifter at the pin, our Python tools, and
+# our host code compiled for Windows x86. Each job's steps are a script in
+# scripts/, so a thread runs the same checks before a commit
+# (docs/build-and-test-reference.md, "CI").
+name: CI
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linux:
+    name: Audit, difftest, tools, mingw-w64 syntax check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0   # the audit checks the whole history, not only HEAD
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: mingw-w64 i686
+        run: sudo apt-get update -q && sudo apt-get install -y -q gcc-mingw-w64-i686
+      - name: pcrecomp at the pin
+        run: bash scripts/01_fetch_pcrecomp.sh
+        env:
+          PYTHON: python
+      - name: Checks
+        run: bash scripts/ci_checks.sh
+        env:
+          PYTHON: python
+
+  windows:
+    name: MSVC x86 compile of the host
+    runs-on: windows-2022
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: pcrecomp at the pin
+        shell: bash
+        run: bash scripts/01_fetch_pcrecomp.sh
+        env:
+          PYTHON: python
+      - name: Compile
+        shell: cmd
+        run: scripts\ci_win32.cmd
