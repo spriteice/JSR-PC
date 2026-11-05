@@ -34,7 +34,7 @@ M0 Reproduce
 - **Accept:** `tools/unimplemented_report.py work/gen` reports 0, and difftest passes with
   the new cases included.
 
-## M2: First boot on Windows with native32 (Windows agent; MSVC x86)
+## M2: First boot on Windows with native32 (Windows agent; MSVC x86) — done at `10f62e5`
 
 - Create `src/host_win32/` from the CMake template: `main()` calls `native32_init()`,
   `native32_map()` and `native32_bind()` for the exe, then `native32_call_guest(0x005D7D92)`.
@@ -63,6 +63,17 @@ M0 Reproduce
   (`sub_00578EF0`), where the host was linked, so the allocation failed and the
   read into that range failed with its OVERLAPPED still pending. The host now
   links at 0x30000000 and holds the range for the game until it runs.
+- **Third boot (`10f62e5`, 2026-11-04):** the SEGA logo, the title, the menus, stage
+  select and gameplay. A 20.9-minute session loaded an existing save, played, wrote
+  two saves through Steam Remote Storage (`SAVE/0/JETSET___SYS` changed,
+  `SAVE/9/JETSET___SYS` new) and exited with code 0, with no unresolved-call lines
+  and no crash dumps, in 233 to 268 MB of private memory. A second session, 68 s,
+  loaded the save the first one wrote and played on. Steam showed the game as
+  being played. The game folder was unchanged after both.
+- **Seen, not yet compared with the original exe:** the overlay shows 31 FPS in
+  gameplay against 62 on the SEGA logo, and the main thread uses about 97% of a
+  core. Some background buildings in cutscenes show poor LOD. In the extra-large
+  graffiti picker, the selected icon does not light up as it does in the others.
 
 ## M3: Cross-check function recovery (analysis agent; needs Ghidra 11+)
 

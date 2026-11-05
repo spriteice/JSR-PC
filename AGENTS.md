@@ -41,6 +41,7 @@ No emulator, no Wine, no Proton.
 | Unimplemented | 0 at `b4f1cda`. At the original pin (`ef3f0da`) there were 7 in 4 functions: SSE2 `paddw` (xmm) x2 in each of `sub_005CF8EB`, `sub_005CF92E`, `sub_005CFBE6`, and `cli` x1 in `sub_0044B320` |
 | Compile | All 20 `.c` files pass `gcc -fsyntax-only` with implicit declarations as errors: 0 errors, 0 warnings. At `4bbe636`, MSVC 19.51 rejected 10 files (C2371: a call before the callee's declaration) and the link failed on one call to an address outside the image (`sub_CD0CE8FE`); both are fixed in the lifter |
 | Lifter self-test | `difftest.py`: 392/392 cases match hardware (needs `RECOMP_CC=scripts/gcc-lm` on Linux) |
+| Windows run | M2 is done at `10f62e5` (MSVC 19.51). The game reaches gameplay, writes saves and loads them back; a 20.9-minute session exited with code 0, with no unresolved calls and no crash dumps |
 
 Reproduce it: `00_verify_inputs.sh <game dir>`, `01_fetch_pcrecomp.sh`, `02_lift.sh`, `03_check.sh`.
 

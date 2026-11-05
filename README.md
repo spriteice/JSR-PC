@@ -16,7 +16,7 @@ scripts/02_lift.sh               # ~6 min: analyse, recover 18,102 functions, li
 scripts/03_check.sh              # syntax check + pcrecomp difftest, vs data/baseline.json
 ```
 
-## Building on Windows (the native32 host; not yet run)
+## Building on Windows (the native32 host)
 
 Needs Visual Studio 2022 or later, or its Build Tools, with the x86 C compiler and
 the C++ CMake tools; Git for Windows; and Python 3.10+ (a venv keeps pcrecomp's
@@ -43,11 +43,11 @@ builds in pcrecomp's bring-up diagnostics (`jsr-pc --help` lists them).
 - `docs/FINDINGS.md`: what is inside the exe.
 - `docs/RUNTIME_SURFACE.md`: all 150 imports, and what each host must provide.
 
-## Status (2026-11-04)
+## Status (2026-11-05)
 
-The whole exe lifts with every instruction translated (M1 is done), and the generated
-C parses with 0 errors. The Windows host for M2 (first boot via `native32`) is written
-but not yet built or run. M4a (Linux shim stubs) can run in parallel.
+The whole exe lifts with every instruction translated (M1 is done), and the Windows
+build plays: it reaches gameplay, writes saves and loads them back (M2 is done at
+`10f62e5`). Next is mapping and naming the exe's functions, then Linux (M4a, M4b).
 
 The case study with the full analysis is a Claude doc: "Jet Set Radio PC:
 Reverse-Engineering Case Study".
