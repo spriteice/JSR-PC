@@ -43,6 +43,11 @@ builds in pcrecomp's bring-up diagnostics (`jsr-pc --help` lists them).
 - `docs/FINDINGS.md`: what is inside the exe.
 - `docs/RUNTIME_SURFACE.md`: all 150 imports, and what each host must provide.
 
+## Licence
+
+MIT (`LICENSE`), for this repository's own work. `NOTICE` says what it doesn't
+cover (the game, and the C lifted from it) and credits pcrecomp.
+
 ## Status (2026-11-05)
 
 The whole exe lifts with every instruction translated (M1 is done), and the Windows

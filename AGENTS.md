@@ -75,6 +75,7 @@ table (68,163 entries), which is why the lift is clean. Details: `docs/FINDINGS.
 ```
 AGENTS.md             this brief
 README.md             human quickstart
+LICENSE, NOTICE       MIT for our own work; what it doesn't cover, and pcrecomp's credit
 docs/FINDINGS.md      facts about the binary; read before touching the runtime
 docs/MILESTONES.md    the work, split into milestones and parallel workstreams
 docs/RUNTIME_SURFACE.md  all 150 imports and who answers them on each host

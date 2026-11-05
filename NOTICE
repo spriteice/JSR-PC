@@ -1,0 +1,21 @@
+JSR-PC
+
+This repository's own work is MIT-licensed: see LICENSE. That covers the
+scripts, tools, host code and documents here, and the files in data/, which
+hold facts about the game's exe (hashes, addresses, names) and none of its
+code or data.
+
+Not covered, and not in this repository:
+
+- Jet Set Radio and its files belong to SEGA. Each player brings their own
+  copy; none of its files are here.
+- The C that pcrecomp lifts from the game's exe on a player's machine is a
+  derivative of the game, so it carries the game's terms, not this licence.
+  It is never committed or published. Neither is a build with it compiled in
+  (docs/release-checklist.md).
+
+Built with:
+
+| What | Where | How it is used | Licence |
+|---|---|---|---|
+| pcrecomp, by Ned Heller (@sp00nznet), from the JSR-PC fork | https://github.com/spriteice/pcrecomp, at the commit scripts/01_fetch_pcrecomp.sh pins | Fetched into third_party/pcrecomp, never copied into this repository. Its lifter makes the C; its runtime is compiled into every build | MIT, Copyright (c) 2026 sp00nz: its LICENSE, which goes with any build |
