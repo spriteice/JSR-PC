@@ -161,8 +161,9 @@ behind it.
    match that proves it; the likely one goes in the note instead. A name
    changes freely while no code uses it; once code does, the map and the code
    change in one commit.
-4. **Into the lifted C** through `name_lift.py` (`--known`). Where it falls
-   short, it is extended in the fork, not copied into a second tool here.
+4. **Into the lifted C** through `name_lift.py` (`--known-file` and
+   `--known-only`). Where it falls short, it is extended in the fork, not
+   copied into a second tool here.
 5. **Numbers:** each commit that changes the map states its counts by kind and
    by evidence, and their change since the commit before.
 6. **Columns for replacements:** the calling convention and argument count of

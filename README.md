@@ -12,7 +12,7 @@ game from Steam. The scripts verify it by hash and regenerate everything from it
 ```bash
 scripts/00_verify_inputs.sh "/path/to/steamapps/common/Jet Set Radio"
 scripts/01_fetch_pcrecomp.sh     # the JSR-PC fork, pinned to 84af660
-scripts/02_lift.sh               # ~6 min: analyse, recover 18,102 functions, lift to C
+scripts/02_lift.sh               # ~6 min: analyse, recover 18,102 functions, lift to C, name them
 scripts/03_check.sh              # syntax check + pcrecomp difftest, vs data/baseline.json
 ```
 

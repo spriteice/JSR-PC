@@ -25,6 +25,9 @@ Columns:
                     assert, and no other function passes that name
             rtti    slot N of the class's vtable: Class::vfN (RTTI names classes,
                     not members)
+            vtable-store  it stores a class's vtable into `this`:
+                    Class::constructor, ::destructor or ::constructor_or_destructor
+                    (name_lift.py's rules)
             file    the function passes this source path (__FILE__)
             between the function lies between two functions of the same file, with
                     no other file's function between them
@@ -42,6 +45,12 @@ Names a person or agent assigns go in data/names_manual.tsv
 regenerates it and merges them in.
 
     python3 -I tools/map_functions.py <game dir or jetsetradio.exe> [-o data/function_map.tsv]
+                                      [--known work/known_names.txt]
+
+--known also writes every name as a C identifier, one "VA NAME" per line, for
+pcrecomp's tools/lift/name_lift.py --known-file: `::` becomes `__` and `~` becomes
+`destructor_`, as name_lift spells its own, and a name already taken gets the
+address appended.
 """
 import argparse
 import bisect
@@ -200,7 +209,9 @@ def type_name(decorated):
 
 
 def rtti_names(exe):
-    """{function: (Class::vfN or None, evidence)} from pcrecomp's RTTI recovery."""
+    """({function: (Class::vfN or None, evidence)}, the recovery, C++ spellings).
+
+    From pcrecomp's RTTI recovery."""
     sys.path.insert(0, os.path.join(PCRECOMP, "tools", "cpp"))
     import rtti
     r = rtti.recover(exe)
@@ -225,6 +236,107 @@ def rtti_names(exe):
             continue
         n = slot.get((owner, fn))
         out[fn] = (f"{spelled.get(owner, owner)}::vf{n}" if n is not None else None, "rtti")
+    return out, r, spelled
+
+
+def reachable(md, img, f, end):
+    """The instructions reachable from `f` without leaving [f, end): fall-through and
+    jumps, not calls. A linear sweep would run past a `ret` into whatever follows."""
+    from capstone import x86
+    seen, work, out = set(), [f], []
+    while work:
+        va = work.pop()
+        while f <= va < end and va not in seen:
+            insn = next(md.disasm(img.img[va - img.base:end - img.base], va, 1), None)
+            if insn is None:
+                break
+            seen.add(va)
+            out.append(insn)
+            ops = insn.operands
+            if insn.group(x86.X86_GRP_JUMP) and ops and ops[0].type == x86.X86_OP_IMM:
+                work.append(ops[0].imm)
+            if insn.id in (x86.X86_INS_RET, x86.X86_INS_JMP, x86.X86_INS_INT3):
+                break
+            va += insn.size
+    return sorted(out, key=lambda i: i.address)
+
+
+def structors(img, r, spelled, starts, stubs, skip):
+    """{function: Class::constructor | Class::destructor | Class::constructor_or_destructor}.
+
+    A function that stores a class's vtable into `this` (`mov dword ptr [reg], vtable`)
+    builds or tears down an object. These are name_lift.py's rules, so the map names
+    what name_lift would, and the lift's names all come from here:
+      - it stores several classes' vtables: a constructor stores its bases' first and
+        its own last; a destructor its own first, then its bases';
+      - it stores one class's vtable, and the class has a base with a vtable: a call
+        before the store makes it a constructor (the base's), a call after it a
+        destructor; no call at all leaves it undecided;
+      - the same with no base: undecided.
+    Only primary vtables count, and functions that are vtable slots are left alone.
+    """
+    import capstone
+    from capstone import x86
+    sys.path.insert(0, os.path.join(PCRECOMP, "tools", "cpp"))
+    import rtti
+    vt = {va: rtti.demangle(name) for name, va in r["primary_va"].items()}
+    bases = {rtti.demangle(k): [rtti.demangle(b) for b in v[1:]] for k, v in r["hierarchy"].items()}
+    with_vtable = set(vt.values())
+
+    def owner(va):
+        i = bisect.bisect_right(starts, va) - 1
+        return starts[i] if i >= 0 else None
+
+    cand = set()
+    for blk in img.pe.DIRECTORY_ENTRY_BASERELOC:
+        for e in blk.entries:
+            site = img.base + e.rva
+            if e.type == 3 and img.in_text(site) and img.u32(site) in vt:
+                o = owner(site)
+                if o is not None and o not in skip:
+                    cand.add(o)
+
+    md = capstone.Cs(capstone.CS_ARCH_X86, capstone.CS_MODE_32)
+    md.detail = True
+    start_set = set(starts) | set(stubs)
+    out = {}
+    for f in sorted(cand):
+        i = bisect.bisect_right(starts, f)
+        end = starts[i] if i < len(starts) else img.text[1]
+        stores, calls = [], []                      # (address, class), address
+        for insn in reachable(md, img, f, end):
+            ops = insn.operands
+            if insn.id == x86.X86_INS_MOV and len(ops) == 2 and ops[0].type == x86.X86_OP_MEM \
+                    and ops[0].size == 4 and ops[1].type == x86.X86_OP_IMM and ops[1].imm in vt \
+                    and ops[0].mem.base not in (0, x86.X86_REG_ESP) and ops[0].mem.index == 0 \
+                    and ops[0].mem.disp == 0:
+                stores.append((insn.address, vt[ops[1].imm]))
+            elif insn.id in (x86.X86_INS_CALL, x86.X86_INS_JMP) and ops \
+                    and ops[0].type == x86.X86_OP_IMM \
+                    and (insn.id == x86.X86_INS_CALL or ops[0].imm in start_set):
+                calls.append(insn.address)          # a call, or a tail jump to another function
+        if not stores:
+            continue
+        stores.sort()
+        first_store = stores[0][0]
+        first_call = min(calls) if calls else None
+        stores = [c for _, c in stores]
+        first, last = stores[0], stores[-1]
+        if len(set(stores)) > 1 and first in bases.get(last, []):
+            name, why = last, "constructor"
+        elif len(set(stores)) > 1 and last in bases.get(first, []):
+            name, why = first, "destructor"
+        elif len(set(stores)) == 1:
+            has_base = any(b in with_vtable for b in bases.get(first, []))
+            if has_base and first_call is not None and first_call < first_store:
+                name, why = first, "constructor"
+            elif has_base and first_call is not None:
+                name, why = first, "destructor"
+            else:
+                name, why = first, "constructor_or_destructor"
+        else:
+            continue
+        out[f] = f"{spelled.get(name, name)}::{why}"
     return out
 
 
@@ -334,13 +446,20 @@ def build(exe, catalogue, manual):
         elif paths:
             r["evidence"].append("mentions=" + "|".join(p.replace("\\", "/") for p in paths))
 
-    for fn, (name, ev) in rtti_names(exe).items():
+    by_rtti, recovery, spelled = rtti_names(exe)
+    for fn, (name, ev) in by_rtti.items():
         r = rows.get(fn)
         if r is None:
             continue
         if name and not r["name"]:
             r["name"] = name
         r["evidence"].append(ev)
+
+    for fn, name in structors(img, recovery, spelled, starts, ilt, set(by_rtti)).items():
+        r = rows[fn]
+        if not r["name"]:
+            r["name"] = name
+        r["evidence"].append("vtable-store")
 
     # Between two functions of the same file, with no other file's in between.
     anchored = [(a, rows[a]["module"]) for a in starts if rows[a]["module"]]
@@ -403,6 +522,23 @@ def write(rows, out, exe_hash):
             ]).rstrip("\t") + "\n")
 
 
+def c_names(rows):
+    """[(va, C identifier)] for every named row, unique, in address order."""
+    sys.path.insert(0, os.path.join(PCRECOMP, "tools", "pe"))
+    from merge_names import sanitize
+    out, taken = [], set()
+    for r in rows:
+        if not r["name"]:
+            continue
+        ident = "__".join(sanitize(p.replace("~", "destructor_")) or "unnamed"
+                          for p in r["name"].split("::"))
+        if ident in taken:
+            ident = f"{ident}_{r['address']:08X}"
+        taken.add(ident)
+        out.append((r["address"], ident))
+    return out
+
+
 def summary(rows):
     kinds = collections.Counter(r["kind"] for r in rows)
     ev = collections.Counter(e.split("=")[0] for r in rows for e in r["evidence"])
@@ -420,6 +556,7 @@ def main(argv=None):
     ap.add_argument("-o", "--out", default=os.path.join(ROOT, "data", "function_map.tsv"))
     ap.add_argument("--catalogue", default=os.path.join(ROOT, "data", "functions.json.gz"))
     ap.add_argument("--manual", default=os.path.join(ROOT, "data", "names_manual.tsv"))
+    ap.add_argument("--known", help="also write name_lift's --known-file here")
     a = ap.parse_args(argv)
     exe = find_exe(a.game)
     check_hash(exe)
@@ -429,6 +566,12 @@ def main(argv=None):
     write(rows, a.out, h)
     summary(rows)
     print(f"[*] wrote {a.out}")
+    if a.known:
+        names = c_names(rows)
+        with open(a.known, "w", newline="\n") as f:
+            f.write("# C names for tools/lift/name_lift.py --known-file, from data/function_map.tsv\n")
+            f.writelines(f"0x{va:08X}\t{n}\n" for va, n in names)
+        print(f"[*] wrote {len(names)} C names to {a.known}")
 
 
 if __name__ == "__main__":

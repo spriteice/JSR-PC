@@ -89,20 +89,30 @@ M0 Reproduce
 
 - `tools/map_functions.py` writes `data/function_map.tsv` (see "Naming functions" in
   `AGENTS.md`). It takes names from the functions' own log and assert strings, RTTI
-  vtables, `__FILE__` paths, the incremental-linking table and the import thunks, and
-  merges `data/names_manual.tsv`.
+  vtables, the vtable a constructor or destructor stores, `__FILE__` paths, the
+  incremental-linking table and the import thunks, and merges `data/names_manual.tsv`.
 - **First pass (2026-11-05, the catalogue at `b4f1cda`):** 404 of 8,772 function starts
   named: 103 from their own strings, 292 from RTTI (`Class::vfN`; RTTI names classes,
   not members) and 9 by hand from what M2 found (the file reads, `MapDCAddress`,
   `Input_Init`). 249 entries are placed in 24 source files. Nearly all are in the
   Katana framework, Ninja, Shinobi and the PC layer, from 0x544000 on. The Dreamcast
   game code, 5,126 starts below 0x544000, has 2: `markGraffitiUsed` and `Load_Step`.
+- **Names in the lift (2026-11-05, pcrecomp `84af660`):** `02_lift.sh` puts the map's
+  names into the generated C with `name_lift.py --known-only`, so the C and the map
+  agree: 1,154 of 18,102 entries. The map adds 143 constructors and destructors, found
+  by the vtable they store (547 starts named, +143), and 146 more stubs and thunks named
+  after the function they reach (607). Each function's header counts its callers through
+  its incremental-linking stub, so `MapDCAddress` reads "called from 28 places" where it
+  read "not called directly". One constructor or destructor (0x5C9030) is read short,
+  because the catalogue has a false start inside it at 0x5C9067: M3's cross-check should
+  find starts like that.
 - Next, in order:
-  1. The lifter writes the names into the generated C (a pcrecomp fork change).
-  2. A replacement path: a listed function is left out of the lift and written by hand
-     in `src/`, then compared with the lifted version.
-  3. The C runtime and other linked libraries by signature (Ghidra's Function ID, with M3).
-  4. The game code by role: what each function calls (Ninja draws, file reads, sound)
+  1. A replacement path: a listed function is left out of the lift and written by hand
+     in `src/game/`, then compared with the lifted version.
+  2. The C runtime and other linked libraries by signature (Ghidra's Function ID, with M3).
+     A guest name must not collide with a C library name the generated files declare
+     (`memcpy`, `floor`).
+  3. The game code by role: what each function calls (Ninja draws, file reads, sound)
      and the function-pointer tables it sits in (2,939 code pointers in data).
 - **Accept (each pass):** the script runs on the verified exe, every manual name has a
   note, the counts are recorded here, and `audit_repo.py` reports CLEAN.

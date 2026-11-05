@@ -17,13 +17,21 @@
    "recomp_dispatch.c",
    "recomp_funcs.h"
   ],
-  "lines": 4036886,
-  "size_mb": 189,
+  "lines": 4095907,
+  "lines_before_names": 4036886,
+  "size_mb": 191,
   "dispatch_entries": 18102,
   "icall_sites": 4639,
   "unimplemented_insns": 0,
   "functions_with_unimplemented": 0,
   "seconds": 151
+ },
+ "names": {
+  "tool": "name_lift.py --known-file --known-only, from data/function_map.tsv",
+  "named": 1154,
+  "of": 18102,
+  "named_by_kind": {"start": 547, "ilt": 579, "thunk": 21, "import": 7},
+  "starts_by_source": {"rtti": 292, "vtable-store": 143, "self": 103, "manual": 9}
  },
  "syntax_check": {
   "compiler": "gcc 13 -fsyntax-only -Werror=implicit-function-declaration -Werror=implicit-int (x86-64)",

@@ -5,7 +5,7 @@ address	kind	name	module	evidence	target
 0x0040100F	ilt				0x004ADF90
 0x00401014	ilt				0x00587BD0
 0x00401019	ilt				0x004F9110
-0x0040101E	ilt				0x005C7F90
+0x0040101E	ilt	j_MainMenuOption::constructor			0x005C7F90
 0x00401023	ilt				0x005AF520
 0x00401028	ilt				0x00439950
 0x0040102D	ilt				0x00496C80
@@ -43,7 +43,7 @@ address	kind	name	module	evidence	target
 0x004010CD	ilt				0x00599440
 0x004010D2	ilt				0x00599430
 0x004010D7	ilt				0x004EFCE0
-0x004010DC	ilt				0x00577E20
+0x004010DC	ilt	j_Subtitle::constructor_or_destructor			0x00577E20
 0x004010E1	ilt				0x00426C10
 0x004010E6	ilt				0x005BD030
 0x004010EB	ilt				0x0054C160
@@ -62,7 +62,7 @@ address	kind	name	module	evidence	target
 0x0040112C	ilt				0x00437CA0
 0x00401131	ilt				0x0058E050
 0x00401136	ilt	j_buGetFileSize			0x00595E50
-0x0040113B	ilt				0x00544D50
+0x0040113B	ilt	j_std::bad_alloc::destructor			0x00544D50
 0x00401140	ilt				0x00458250
 0x00401145	ilt				0x004B2220
 0x0040114A	ilt				0x00590C70
@@ -140,9 +140,9 @@ address	kind	name	module	evidence	target
 0x004012B2	ilt				0x00439A90
 0x004012B7	ilt				0x004C1080
 0x004012BC	ilt				0x00598D00
-0x004012C1	ilt				0x005CA750
+0x004012C1	ilt	j_PauseMenuOption::constructor			0x005CA750
 0x004012C6	ilt				0x0050A5A0
-0x004012CB	ilt				0x005BB6C0
+0x004012CB	ilt	j_BtnSwitch::destructor			0x005BB6C0
 0x004012D0	ilt				0x0045C480
 0x004012D5	ilt				0x004ECFF0
 0x004012DA	ilt	j_njGarbageTexture			0x005B01B0
@@ -157,9 +157,9 @@ address	kind	name	module	evidence	target
 0x00401307	ilt				0x0045B450
 0x0040130C	ilt				0x004AE890
 0x00401311	ilt				0x0051C430
-0x00401316	ilt				0x005CDFC0
+0x00401316	ilt	j_ConfirmExitOverlay::constructor			0x005CDFC0
 0x0040131B	ilt				0x004B2F30
-0x00401320	ilt				0x005CB0E0
+0x00401320	ilt	j_PauseMenuOption::destructor			0x005CB0E0
 0x00401325	ilt				0x004B2F40
 0x0040132A	ilt				0x005CEFE0
 0x0040132F	ilt				0x004B2F50
@@ -233,7 +233,7 @@ address	kind	name	module	evidence	target
 0x00401483	ilt				0x004ACD20
 0x00401488	ilt				0x00504140
 0x0040148D	ilt				0x00457940
-0x00401492	ilt				0x00576F80
+0x00401492	ilt	j_CCallResult<SteamWrapper,LeaderboardScoreUploaded_t>::constructor_or_destructor			0x00576F80
 0x00401497	ilt				0x0054DBD0
 0x0040149C	ilt				0x00486590
 0x004014A1	ilt				0x005B9FD0
@@ -294,7 +294,7 @@ address	kind	name	module	evidence	target
 0x004015B4	ilt				0x0043CE70
 0x004015B9	ilt				0x00442DF0
 0x004015BE	ilt				0x004C1620
-0x004015C3	ilt				0x005CD690
+0x004015C3	ilt	j_Popup::constructor			0x005CD690
 0x004015C8	ilt				0x005C3950
 0x004015CD	ilt				0x005BE4A0
 0x004015D2	ilt				0x005C8B20
@@ -310,7 +310,7 @@ address	kind	name	module	evidence	target
 0x00401604	ilt	j_buExGetSlotUsed			0x00595BD0
 0x00401609	ilt	j_Subtitle::vf0			0x00578480
 0x0040160E	ilt				0x0043A240
-0x00401613	ilt				0x005C9030
+0x00401613	ilt	j_MainMenuOption::constructor_or_destructor			0x005C9030
 0x00401618	ilt				0x004C5B80
 0x0040161D	ilt				0x00520EC0
 0x00401622	ilt				0x0051D580
@@ -344,7 +344,7 @@ address	kind	name	module	evidence	target
 0x004016AE	ilt				0x0043D1C0
 0x004016B3	ilt				0x004E23A0
 0x004016B8	ilt				0x005091A0
-0x004016BD	ilt				0x005CD7A0
+0x004016BD	ilt	j_RenderElement::constructor_or_destructor			0x005CD7A0
 0x004016C2	ilt				0x0043A1B0
 0x004016C7	ilt				0x00582930
 0x004016CC	ilt				0x004EC920
@@ -414,7 +414,7 @@ address	kind	name	module	evidence	target
 0x0040180C	ilt				0x005A4F80
 0x00401811	ilt				0x005468A0
 0x00401816	ilt				0x00423AF0
-0x0040181B	ilt				0x00578E90
+0x0040181B	ilt	j_CApplication::constructor_or_destructor			0x00578E90
 0x00401820	ilt				0x00595670
 0x00401825	ilt				0x004239F0
 0x0040182A	ilt				0x0054DD40
@@ -457,7 +457,7 @@ address	kind	name	module	evidence	target
 0x004018E3	ilt				0x004E3EE0
 0x004018E8	ilt				0x004E3F40
 0x004018ED	ilt				0x0041AC50
-0x004018F2	ilt				0x00591BD0
+0x004018F2	ilt	j_CSound::destructor			0x00591BD0
 0x004018F7	ilt				0x004B7330
 0x004018FC	ilt				0x005BB990
 0x00401901	ilt				0x005930D0
@@ -482,7 +482,7 @@ address	kind	name	module	evidence	target
 0x00401960	ilt				0x004E3840
 0x00401965	ilt				0x004945A0
 0x0040196A	ilt				0x00583F60
-0x0040196F	ilt				0x00578650
+0x0040196F	ilt	j_Subtitles::constructor_or_destructor			0x00578650
 0x00401974	ilt				0x004BF5F0
 0x00401979	ilt				0x00438400
 0x0040197E	ilt				0x0043FFA0
@@ -545,7 +545,7 @@ address	kind	name	module	evidence	target
 0x00401A9B	ilt				0x005A43A0
 0x00401AA0	ilt				0x005A44C0
 0x00401AA5	ilt				0x00447410
-0x00401AAA	ilt				0x005C2770
+0x00401AAA	ilt	j_Overlay::destructor			0x005C2770
 0x00401AAF	ilt				0x00436320
 0x00401AB4	ilt				0x00576970
 0x00401AB9	ilt				0x004BED00
@@ -565,7 +565,7 @@ address	kind	name	module	evidence	target
 0x00401AFF	ilt				0x005841D0
 0x00401B04	ilt				0x00564A00
 0x00401B09	ilt				0x00558B60
-0x00401B0E	ilt				0x005C8E00
+0x00401B0E	ilt	j_StoreView::destructor			0x005C8E00
 0x00401B13	ilt				0x005BBFD0
 0x00401B18	ilt				0x005577F0
 0x00401B1D	ilt				0x004E24D0
@@ -640,14 +640,14 @@ address	kind	name	module	evidence	target
 0x00401C76	ilt				0x004B8460
 0x00401C7B	ilt				0x0043FC60
 0x00401C80	ilt				0x0052E9F0
-0x00401C85	ilt				0x005CBD40
+0x00401C85	ilt	j_LoadIndicator::destructor			0x005CBD40
 0x00401C8A	ilt				0x005C6820
 0x00401C8F	ilt				0x00456FD0
 0x00401C94	ilt				0x005C4640
-0x00401C99	ilt				0x005BE860
+0x00401C99	ilt	j_DlgOptionsSettings::destructor			0x005BE860
 0x00401C9E	ilt				0x0051B060
 0x00401CA3	ilt				0x005C19E0
-0x00401CA8	ilt				0x00576950
+0x00401CA8	ilt	j_CCallbackBase::constructor_or_destructor			0x00576950
 0x00401CAD	ilt				0x004ED030
 0x00401CB2	ilt				0x00587770
 0x00401CB7	ilt				0x00585D60
@@ -802,7 +802,7 @@ address	kind	name	module	evidence	target
 0x00401FA0	ilt				0x00411B20
 0x00401FA5	ilt	j_DlgBase::vf0			0x005BC6F0
 0x00401FAA	ilt				0x005BDA10
-0x00401FAF	ilt				0x00546990
+0x00401FAF	ilt	j_std::bad_alloc::constructor			0x00546990
 0x00401FB4	ilt				0x004B4F20
 0x00401FB9	ilt				0x0042F970
 0x00401FBE	ilt				0x00415B70
@@ -852,7 +852,7 @@ address	kind	name	module	evidence	target
 0x0040209A	ilt				0x00549AE0
 0x0040209F	ilt				0x00517170
 0x004020A4	ilt				0x004B8B70
-0x004020A9	ilt				0x005C5DE0
+0x004020A9	ilt	j_LeaderView::destructor			0x005C5DE0
 0x004020AE	ilt				0x005BC160
 0x004020B3	ilt				0x00447B20
 0x004020B8	ilt				0x00436D70
@@ -961,10 +961,10 @@ address	kind	name	module	evidence	target
 0x004022BB	ilt				0x00439680
 0x004022C0	ilt				0x00431BB0
 0x004022C5	ilt				0x00424F10
-0x004022CA	ilt				0x005C2970
+0x004022CA	ilt	j_GenericMenuOption::constructor			0x005C2970
 0x004022CF	ilt				0x004325C0
 0x004022D4	ilt				0x004B1E60
-0x004022D9	ilt				0x005BF2B0
+0x004022D9	ilt	j_DlgOptions::constructor			0x005BF2B0
 0x004022DE	ilt				0x00579C50
 0x004022E3	ilt				0x005208C0
 0x004022E8	ilt	j_GameOverMenu::vf14			0x005C1860
@@ -972,7 +972,7 @@ address	kind	name	module	evidence	target
 0x004022F2	ilt				0x004F1F00
 0x004022F7	ilt				0x004BF510
 0x004022FC	ilt				0x00455090
-0x00402301	ilt				0x005C71C0
+0x00402301	ilt	j_Leaderboards::constructor			0x005C71C0
 0x00402306	ilt				0x00587350
 0x0040230B	ilt				0x00591970
 0x00402310	ilt				0x00432A50
@@ -987,13 +987,13 @@ address	kind	name	module	evidence	target
 0x0040233D	ilt				0x00425E50
 0x00402342	ilt	j_Backup_LoadSlot			0x00548BD0
 0x00402347	ilt				0x00421A60
-0x0040234C	ilt				0x005CD1F0
+0x0040234C	ilt	j_Overlay::constructor			0x005CD1F0
 0x00402351	ilt				0x005B1040
 0x00402356	ilt				0x0057A3A0
 0x0040235B	ilt				0x0041F0A0
 0x00402360	ilt				0x005CE7D0
 0x00402365	ilt				0x00578DE0
-0x0040236A	ilt				0x005CA690
+0x0040236A	ilt	j_MsgBox::constructor			0x005CA690
 0x0040236F	ilt				0x004B5080
 0x00402374	ilt				0x004EC990
 0x00402379	ilt				0x00432230
@@ -1042,7 +1042,7 @@ address	kind	name	module	evidence	target
 0x00402450	ilt				0x00571540
 0x00402455	ilt				0x0054BEC0
 0x0040245A	ilt	j_njReLoadTextureNum			0x005B9780
-0x0040245F	ilt				0x005C6420
+0x0040245F	ilt	j_CStatsListener::constructor_or_destructor			0x005C6420
 0x00402464	ilt				0x00585FD0
 0x00402469	ilt				0x005B0A20
 0x0040246E	ilt				0x00459960
@@ -1108,7 +1108,7 @@ address	kind	name	module	evidence	target
 0x0040259A	ilt				0x00415BF0
 0x0040259F	ilt				0x00498390
 0x004025A4	ilt	j_Title::vf1			0x005CD650
-0x004025A9	ilt				0x005BDE00
+0x004025A9	ilt	j_DlgBonus::constructor			0x005BDE00
 0x004025AE	ilt	j_CApplication::vf0			0x00579F20
 0x004025B3	ilt				0x005B9BB0
 0x004025B8	ilt				0x00500B50
@@ -1177,7 +1177,7 @@ address	kind	name	module	evidence	target
 0x004026F3	ilt				0x00461580
 0x004026F8	ilt				0x004269C0
 0x004026FD	ilt				0x00547B70
-0x00402702	ilt				0x005C10E0
+0x00402702	ilt	j_DlgYesNo::constructor			0x005C10E0
 0x00402707	ilt				0x00421A00
 0x0040270C	ilt	j_LeaderRow::vf0			0x005C7B70
 0x00402711	ilt				0x0054A530
@@ -1203,7 +1203,7 @@ address	kind	name	module	evidence	target
 0x00402775	ilt				0x004136A0
 0x0040277A	ilt	j_njLoadTextureFromMem			0x005B9320
 0x0040277F	ilt				0x004F93F0
-0x00402784	ilt				0x005CD890
+0x00402784	ilt	j_StatusBar::constructor			0x005CD890
 0x00402789	ilt				0x00596500
 0x0040278E	ilt				0x00486540
 0x00402793	ilt				0x00457750
@@ -1219,7 +1219,7 @@ address	kind	name	module	evidence	target
 0x004027C5	ilt				0x004263D0
 0x004027CA	ilt				0x00571620
 0x004027CF	ilt				0x00588CE0
-0x004027D4	ilt				0x0058A050
+0x004027D4	ilt	j_CVideoWin32::destructor			0x0058A050
 0x004027D9	ilt				0x004A0D30
 0x004027DE	ilt				0x0041F410
 0x004027E3	ilt				0x004479E0
@@ -1258,7 +1258,7 @@ address	kind	name	module	evidence	target
 0x00402888	ilt				0x004BE140
 0x0040288D	ilt				0x00458800
 0x00402892	ilt				0x00411B50
-0x00402897	ilt				0x005CB970
+0x00402897	ilt	j_SaveIndicator::constructor			0x005CB970
 0x0040289C	ilt				0x00596B60
 0x004028A1	ilt				0x005376B0
 0x004028A6	ilt				0x0040DE00
@@ -1397,7 +1397,7 @@ address	kind	name	module	evidence	target
 0x00402B3F	ilt				0x0058D6F0
 0x00402B44	ilt				0x00439620
 0x00402B49	ilt				0x005A8660
-0x00402B4E	ilt				0x00577100
+0x00402B4E	ilt	j_CCallResult<SteamWrapper,LeaderboardScoresDownloaded_t>::constructor_or_destructor			0x00577100
 0x00402B53	ilt				0x004BDED0
 0x00402B58	ilt				0x00434340
 0x00402B5D	ilt				0x004B54A0
@@ -1417,7 +1417,7 @@ address	kind	name	module	evidence	target
 0x00402BA3	ilt				0x00435FB0
 0x00402BA8	ilt				0x00434130
 0x00402BAD	ilt				0x005C06F0
-0x00402BB2	ilt				0x00576EC0
+0x00402BB2	ilt	j_CCallResult<SteamWrapper,LeaderboardFindResult_t>::constructor_or_destructor			0x00576EC0
 0x00402BB7	ilt				0x004F5EE0
 0x00402BBC	ilt				0x00430690
 0x00402BC1	ilt	j_CVideo::vf32			0x00588770
@@ -1475,7 +1475,7 @@ address	kind	name	module	evidence	target
 0x00402CC5	ilt				0x00555B10
 0x00402CCA	ilt				0x00555D00
 0x00402CCF	ilt				0x005564F0
-0x00402CD4	ilt				0x005BE480
+0x00402CD4	ilt	j_DlgJapInstructions::destructor			0x005BE480
 0x00402CD9	ilt				0x004D3340
 0x00402CDE	ilt				0x004F11E0
 0x00402CE3	ilt	j_ntInfInit			0x00595710
@@ -1506,16 +1506,16 @@ address	kind	name	module	evidence	target
 0x00402D60	ilt				0x00588250
 0x00402D65	ilt				0x005AE8D0
 0x00402D6A	ilt				0x0049ECD0
-0x00402D6F	ilt				0x005C1F60
+0x00402D6F	ilt	j_GenericMenu::constructor			0x005C1F60
 0x00402D74	ilt				0x004A8DC0
 0x00402D79	ilt				0x005C3960
 0x00402D7E	ilt	j_Subtitle::vf0			0x00578480
 0x00402D83	ilt				0x00595500
-0x00402D88	ilt				0x005BF310
+0x00402D88	ilt	j_DlgOptions::destructor			0x005BF310
 0x00402D8D	ilt				0x0054BE70
 0x00402D92	ilt				0x00547910
 0x00402D97	ilt				0x00423540
-0x00402D9C	ilt				0x005883C0
+0x00402D9C	ilt	j_RenderElement::constructor_or_destructor			0x005883C0
 0x00402DA1	ilt				0x00547950
 0x00402DA6	ilt				0x004D5270
 0x00402DAB	ilt				0x004B60A0
@@ -1523,7 +1523,7 @@ address	kind	name	module	evidence	target
 0x00402DB5	ilt				0x004BC200
 0x00402DBA	ilt				0x0041FDA0
 0x00402DBF	ilt				0x00547700
-0x00402DC4	ilt				0x005CC4C0
+0x00402DC4	ilt	j_SaveLoadMenu::destructor			0x005CC4C0
 0x00402DC9	ilt				0x004BED70
 0x00402DCE	ilt				0x004FBC20
 0x00402DD3	ilt				0x0043CAB0
@@ -1551,7 +1551,7 @@ address	kind	name	module	evidence	target
 0x00402E41	ilt				0x0045B7C0
 0x00402E46	ilt				0x0057FEB0
 0x00402E4B	ilt	j_DlgYesNo::vf1			0x005C14C0
-0x00402E50	ilt				0x005C1FA0
+0x00402E50	ilt	j_GenericMenu::destructor			0x005C1FA0
 0x00402E55	ilt				0x005AF6A0
 0x00402E5A	ilt				0x0041BAA0
 0x00402E5F	ilt				0x00539C60
@@ -1582,7 +1582,7 @@ address	kind	name	module	evidence	target
 0x00402EDC	ilt				0x004AE010
 0x00402EE1	ilt				0x00439870
 0x00402EE6	ilt				0x004A7AA0
-0x00402EEB	ilt				0x005CA4F0
+0x00402EEB	ilt	j_MsgBox::destructor			0x005CA4F0
 0x00402EF0	ilt				0x00454700
 0x00402EF5	ilt				0x0044CF60
 0x00402EFA	ilt				0x00481760
@@ -1616,14 +1616,14 @@ address	kind	name	module	evidence	target
 0x00402F86	ilt				0x004F9CF0
 0x00402F8B	ilt				0x00444050
 0x00402F90	ilt				0x005BD4B0
-0x00402F95	ilt				0x005CE100
+0x00402F95	ilt	j_WarningBanner::constructor			0x005CE100
 0x00402F9A	ilt				0x00587680
 0x00402F9F	ilt				0x004DB0E0
-0x00402FA4	ilt				0x005BA070
+0x00402FA4	ilt	j_AchievementIcon::constructor			0x005BA070
 0x00402FA9	ilt				0x004B3050
 0x00402FAE	ilt				0x0045C330
 0x00402FB3	ilt				0x0045B8E0
-0x00402FB8	ilt				0x005779E0
+0x00402FB8	ilt	j_CCallback<SteamWrapper,GameOverlayActivated_t,0>::destructor			0x005779E0
 0x00402FBD	ilt				0x004264C0
 0x00402FC2	ilt				0x004D3390
 0x00402FC7	ilt				0x0042ADA0
@@ -1652,7 +1652,7 @@ address	kind	name	module	evidence	target
 0x0040303A	ilt				0x004F15A0
 0x0040303F	ilt				0x00578580
 0x00403044	ilt	j_Popup::vf0			0x005CEA30
-0x00403049	ilt				0x005CE440
+0x00403049	ilt	j_MyButton::constructor			0x005CE440
 0x0040304E	ilt				0x005BC0F0
 0x00403053	ilt				0x00519DC0
 0x00403058	ilt				0x00587C10
@@ -1669,7 +1669,7 @@ address	kind	name	module	evidence	target
 0x0040308F	ilt				0x00424D20
 0x00403094	ilt				0x0042B9D0
 0x00403099	ilt				0x00426A10
-0x0040309E	ilt				0x00591BB0
+0x0040309E	ilt	j_CSound::constructor			0x00591BB0
 0x004030A3	ilt				0x005BC900
 0x004030A8	ilt				0x0051A4A0
 0x004030AD	ilt				0x0051A520
@@ -1782,7 +1782,7 @@ address	kind	name	module	evidence	target
 0x004032C4	ilt				0x005BDF80
 0x004032C9	ilt				0x00426420
 0x004032CE	ilt				0x004B8E10
-0x004032D3	ilt				0x005BE3F0
+0x004032D3	ilt	j_DlgJapInstructions::constructor			0x005BE3F0
 0x004032D8	ilt				0x004ECF70
 0x004032DD	ilt				0x005AFE40
 0x004032E2	ilt	j_Leaderboards::vf6			0x005C6DF0
@@ -1815,13 +1815,13 @@ address	kind	name	module	evidence	target
 0x00403369	ilt				0x005476F0
 0x0040336E	ilt				0x00418CA0
 0x00403373	ilt				0x004EFC20
-0x00403378	ilt				0x005CDD10
+0x00403378	ilt	j_RenderElement::constructor_or_destructor			0x005CDD10
 0x0040337D	ilt				0x00435710
 0x00403382	ilt				0x005953A0
 0x00403387	ilt				0x004ADCB0
 0x0040338C	ilt				0x00590C60
 0x00403391	ilt	j_DlgOptions::vf1			0x005C02E0
-0x00403396	ilt				0x00588810
+0x00403396	ilt	j_CVideo::constructor_or_destructor			0x00588810
 0x0040339B	ilt				0x005CE680
 0x004033A0	ilt				0x005BB9C0
 0x004033A5	ilt				0x00459EF0
@@ -1851,7 +1851,7 @@ address	kind	name	module	evidence	target
 0x0040341D	ilt				0x005CE5E0
 0x00403422	ilt				0x004E9770
 0x00403427	ilt				0x004E9990
-0x0040342C	ilt				0x005CE9C0
+0x0040342C	ilt	j_RenderElement::constructor_or_destructor			0x005CE9C0
 0x00403431	ilt	j_Instructions::vf7			0x005C3880
 0x00403436	ilt				0x00597060
 0x0040343B	ilt				0x004573C0
@@ -1897,8 +1897,8 @@ address	kind	name	module	evidence	target
 0x00403503	ilt				0x00426980
 0x00403508	ilt				0x004B05E0
 0x0040350D	ilt				0x004478B0
-0x00403512	ilt				0x005C4F30
-0x00403517	ilt				0x005C62F0
+0x00403512	ilt	j_Instructions::constructor			0x005C4F30
+0x00403517	ilt	j_PageArrow::constructor			0x005C62F0
 0x0040351C	ilt				0x004F5C20
 0x00403521	ilt				0x0042D0C0
 0x00403526	ilt				0x005CE720
@@ -1959,7 +1959,7 @@ address	kind	name	module	evidence	target
 0x00403639	ilt				0x004137D0
 0x0040363E	ilt				0x004E3FA0
 0x00403643	ilt				0x004506E0
-0x00403648	ilt				0x005BEAD0
+0x00403648	ilt	j_DlgOptionsControls::destructor			0x005BEAD0
 0x0040364D	ilt				0x00592CD0
 0x00403652	ilt				0x0042FAE0
 0x00403657	ilt				0x0043A4F0
@@ -2032,7 +2032,7 @@ address	kind	name	module	evidence	target
 0x004037A6	ilt				0x005955B0
 0x004037AB	ilt	j_Overlay::vf0			0x005CE7E0
 0x004037B0	ilt				0x005CEDD0
-0x004037B5	ilt				0x005C9140
+0x004037B5	ilt	j_StoreView::constructor			0x005C9140
 0x004037BA	ilt				0x005441A0
 0x004037BF	ilt	j_AudioPlayback::DebugMidPlay			0x005470E0
 0x004037C4	ilt				0x004ADCD0
@@ -2099,7 +2099,7 @@ address	kind	name	module	evidence	target
 0x004038F5	ilt				0x00446140
 0x004038FA	ilt				0x0058D820
 0x004038FF	ilt				0x00595FC0
-0x00403904	ilt				0x005CE0F0
+0x00403904	ilt	j_Overlay::destructor			0x005CE0F0
 0x00403909	ilt				0x0050E110
 0x0040390E	ilt				0x00503E50
 0x00403913	ilt				0x00438E10
@@ -2118,7 +2118,7 @@ address	kind	name	module	evidence	target
 0x00403954	ilt				0x0059E9F0
 0x00403959	ilt				0x004CC140
 0x0040395E	ilt				0x00596A00
-0x00403963	ilt				0x005CE840
+0x00403963	ilt	j_WaitIndicator::constructor			0x005CE840
 0x00403968	ilt				0x00590B40
 0x0040396D	ilt				0x0042AFA0
 0x00403972	ilt				0x0053B460
@@ -2149,7 +2149,7 @@ address	kind	name	module	evidence	target
 0x004039EF	ilt				0x004BE7E0
 0x004039F4	ilt	j_DlgYesNo::vf13			0x005C1620
 0x004039F9	ilt				0x00558020
-0x004039FE	ilt				0x005C2310
+0x004039FE	ilt	j_UpsellScreen::constructor			0x005C2310
 0x00403A03	ilt				0x0044E700
 0x00403A08	ilt				0x0058CC00
 0x00403A0D	ilt				0x00596100
@@ -2165,7 +2165,7 @@ address	kind	name	module	evidence	target
 0x00403A3F	ilt				0x00576B10
 0x00403A44	ilt				0x00505010
 0x00403A49	ilt				0x0057A6F0
-0x00403A4E	ilt				0x005CB010
+0x00403A4E	ilt	j_Overlay::destructor			0x005CB010
 0x00403A53	ilt				0x00564430
 0x00403A58	ilt				0x00549BC0
 0x00403A5D	ilt				0x004424D0
@@ -2181,7 +2181,7 @@ address	kind	name	module	evidence	target
 0x00403A8F	ilt				0x005894F0
 0x00403A94	ilt				0x00426600
 0x00403A99	ilt				0x004B05A0
-0x00403A9E	ilt				0x005C1800
+0x00403A9E	ilt	j_GameOverMenu::constructor			0x005C1800
 0x00403AA3	ilt				0x005B0B40
 0x00403AA8	ilt	j_MainMenu::vf7			0x005C88A0
 0x00403AAD	ilt				0x004EF2A0
@@ -2244,7 +2244,7 @@ address	kind	name	module	evidence	target
 0x00403BCA	ilt				0x00496860
 0x00403BCF	ilt				0x00459FA0
 0x00403BD4	ilt				0x004A5C80
-0x00403BD9	ilt				0x00589F80
+0x00403BD9	ilt	j_CVideoWin32::constructor			0x00589F80
 0x00403BDE	ilt				0x00443F40
 0x00403BE3	ilt				0x0057A8D0
 0x00403BE8	ilt				0x005B2D50
@@ -2310,7 +2310,7 @@ address	kind	name	module	evidence	target
 0x00403D14	ilt				0x004E5810
 0x00403D19	ilt				0x005BD160
 0x00403D1E	ilt	j_CVideoWin32::vf0			0x0058C2B0
-0x00403D23	ilt				0x005C5880
+0x00403D23	ilt	j_LeaderOption::constructor			0x005C5880
 0x00403D28	ilt	j_CCallResult<SteamWrapper,LeaderboardScoreUploaded_t>::vf0			0x005770B0
 0x00403D2D	ilt				0x0051DF00
 0x00403D32	ilt				0x0048BCC0
@@ -2337,7 +2337,7 @@ address	kind	name	module	evidence	target
 0x00403D9B	ilt	j_RenderElement::vf3			0x005884D0
 0x00403DA0	ilt				0x004971E0
 0x00403DA5	ilt				0x00497690
-0x00403DAA	ilt				0x005BE800
+0x00403DAA	ilt	j_DlgOptionsSettings::constructor			0x005BE800
 0x00403DAF	ilt				0x005A0040
 0x00403DB4	ilt				0x004BEE80
 0x00403DB9	ilt				0x0040D080
@@ -2422,7 +2422,7 @@ address	kind	name	module	evidence	target
 0x00403F44	ilt	j_SaveIndicatorWarning::vf0			0x005CC360
 0x00403F49	ilt				0x004BD280
 0x00403F4E	ilt				0x0040D020
-0x00403F53	ilt				0x005CE240
+0x00403F53	ilt	j_Overlay::destructor			0x005CE240
 0x00403F58	ilt				0x005C65F0
 0x00403F5D	ilt				0x0054D4E0
 0x00403F62	ilt				0x00552620
@@ -2554,7 +2554,7 @@ address	kind	name	module	evidence	target
 0x004041D8	ilt				0x0042AD20
 0x004041DD	ilt				0x004C0F90
 0x004041E2	ilt				0x00420110
-0x004041E7	ilt				0x00588520
+0x004041E7	ilt	j_RenderElement::constructor_or_destructor			0x00588520
 0x004041EC	ilt				0x005CE650
 0x004041F1	ilt				0x004ACFE0
 0x004041F6	ilt				0x00455FE0
@@ -2562,9 +2562,9 @@ address	kind	name	module	evidence	target
 0x00404200	ilt				0x00577F30
 0x00404205	ilt				0x004E8990
 0x0040420A	ilt				0x0045C300
-0x0040420F	ilt				0x005CDE90
+0x0040420F	ilt	j_RenderElement::constructor_or_destructor			0x005CDE90
 0x00404214	ilt				0x004EFEF0
-0x00404219	ilt				0x005C3120
+0x00404219	ilt	j_GenericMenu::constructor			0x005C3120
 0x0040421E	ilt				0x004237A0
 0x00404223	ilt				0x0043C290
 0x00404228	ilt				0x005813F0
@@ -2620,7 +2620,7 @@ address	kind	name	module	evidence	target
 0x00404322	ilt				0x004F1200
 0x00404327	ilt				0x00446840
 0x0040432C	ilt				0x00447680
-0x00404331	ilt				0x005C8DA0
+0x00404331	ilt	j_Overlay::destructor			0x005C8DA0
 0x00404336	ilt				0x005BCA70
 0x0040433B	ilt				0x00585F30
 0x00404340	ilt				0x00442BB0
@@ -2692,7 +2692,7 @@ address	kind	name	module	evidence	target
 0x0040448A	ilt				0x005AE6F0
 0x0040448F	ilt				0x0054ED40
 0x00404494	ilt				0x005498E0
-0x00404499	ilt				0x005CBFC0
+0x00404499	ilt	j_SaveIndicatorWarning::constructor			0x005CBFC0
 0x0040449E	ilt				0x005B68A0
 0x004044A3	ilt	j_CVideoWin32::vf16			0x0058AC70
 0x004044A8	ilt	j_DlgOptionsSettings::vf7			0x005BF720
@@ -2741,7 +2741,7 @@ address	kind	name	module	evidence	target
 0x0040457F	ilt				0x005C3920
 0x00404584	ilt				0x00547760
 0x00404589	ilt				0x005946A0
-0x0040458E	ilt				0x005C5F40
+0x0040458E	ilt	j_LeaderOptionHeader::constructor			0x005C5F40
 0x00404593	ilt				0x0059E7E0
 0x00404598	ilt				0x005CEB20
 0x0040459D	ilt				0x00599620
@@ -2793,14 +2793,14 @@ address	kind	name	module	evidence	target
 0x00404683	ilt				0x00456450
 0x00404688	ilt				0x004564D0
 0x0040468D	ilt				0x00456490
-0x00404692	ilt				0x005CDD20
-0x00404697	ilt				0x005CBC10
+0x00404692	ilt	j_MyButton::constructor			0x005CDD20
+0x00404697	ilt	j_LoadIndicator::constructor			0x005CBC10
 0x0040469C	ilt				0x004563D0
 0x004046A1	ilt				0x005C41A0
 0x004046A6	ilt	j_CVideoWin32::vf10			0x0058BD30
 0x004046AB	ilt				0x005C7F50
 0x004046B0	ilt				0x00456390
-0x004046B5	ilt				0x005BB4B0
+0x004046B5	ilt	j_BtnSwitch::constructor			0x005BB4B0
 0x004046BA	ilt				0x005C4370
 0x004046BF	ilt				0x004AD840
 0x004046C4	ilt				0x0058CC70
@@ -2810,7 +2810,7 @@ address	kind	name	module	evidence	target
 0x004046D8	ilt	j_CVideoWin32::vf30			0x0058B160
 0x004046DD	ilt				0x00491390
 0x004046E2	ilt				0x004B8870
-0x004046E7	ilt				0x005BDED0
+0x004046E7	ilt	j_DlgBonus::destructor			0x005BDED0
 0x004046EC	ilt				0x004F72B0
 0x004046F1	ilt				0x004F7990
 0x004046F6	ilt				0x004F7F20
@@ -2843,7 +2843,7 @@ address	kind	name	module	evidence	target
 0x0040477D	ilt				0x005912C0
 0x00404782	ilt				0x00486660
 0x00404787	ilt				0x0045AF70
-0x0040478C	ilt				0x005C22D0
+0x0040478C	ilt	j_Overlay::destructor			0x005C22D0
 0x00404791	ilt				0x0054E5B0
 0x00404796	ilt				0x0042A7C0
 0x0040479B	ilt				0x004CCA60
@@ -2868,7 +2868,7 @@ address	kind	name	module	evidence	target
 0x004047FA	ilt				0x00471F10
 0x004047FF	ilt	j_DlgJapInstructions::vf10			0x005BE630
 0x00404804	ilt				0x004186F0
-0x00404809	ilt				0x005C6EC0
+0x00404809	ilt	j_LeaderRow::destructor			0x005C6EC0
 0x0040480E	ilt				0x00444470
 0x00404813	ilt				0x004B0440
 0x00404818	ilt				0x0043DC70
@@ -2881,7 +2881,7 @@ address	kind	name	module	evidence	target
 0x0040483B	ilt				0x0043A610
 0x00404840	ilt				0x004384D0
 0x00404845	ilt				0x00430890
-0x0040484A	ilt				0x00579E70
+0x0040484A	ilt	j_CApplication::constructor_or_destructor			0x00579E70
 0x0040484F	ilt				0x00431D50
 0x00404854	ilt				0x00431330
 0x00404859	ilt	j_DlgOptionsSettings::vf4			0x005BE9C0
@@ -2899,7 +2899,7 @@ address	kind	name	module	evidence	target
 0x00404895	ilt				0x00590CE0
 0x0040489A	ilt				0x005C18C0
 0x0040489F	ilt				0x004B16B0
-0x004048A4	ilt				0x005CBB50
+0x004048A4	ilt	j_SaveIndicatorWarning::destructor			0x005CBB50
 0x004048A9	ilt				0x00506C00
 0x004048AE	ilt	j_LeaderOption::vf1			0x005C5BF0
 0x004048B3	ilt	j_DlgJapInstructions::vf14			0x005BE470
@@ -2912,7 +2912,7 @@ address	kind	name	module	evidence	target
 0x004048D6	ilt				0x00422290
 0x004048DB	ilt				0x00499EB0
 0x004048E0	ilt				0x00438FC0
-0x004048E5	ilt				0x005CA930
+0x004048E5	ilt	j_PauseMenu::constructor			0x005CA930
 0x004048EA	ilt				0x00549570
 0x004048EF	ilt				0x00497FA0
 0x004048F4	ilt				0x0043A660
@@ -2920,14 +2920,14 @@ address	kind	name	module	evidence	target
 0x004048FE	ilt				0x00433AF0
 0x00404903	ilt				0x005AA1B0
 0x00404908	ilt				0x0040DFE0
-0x0040490D	ilt				0x005C1180
+0x0040490D	ilt	j_DlgYesNo::destructor			0x005C1180
 0x00404912	ilt				0x005B9E80
 0x00404917	ilt				0x00437B20
 0x0040491C	ilt	j_CApplication::SavePath			0x005790E0
 0x00404921	ilt				0x0040F220
 0x00404926	ilt				0x004344F0
 0x0040492B	ilt				0x004B02C0
-0x00404930	ilt				0x005C7330
+0x00404930	ilt	j_PageArrow::constructor			0x005C7330
 0x00404935	ilt				0x00509DB0
 0x0040493A	ilt				0x004BDBB0
 0x0040493F	ilt				0x004BDBE0
@@ -2937,7 +2937,7 @@ address	kind	name	module	evidence	target
 0x00404953	ilt				0x005A66A0
 0x00404958	ilt				0x004BDC10
 0x0040495D	ilt				0x00422320
-0x00404962	ilt				0x00544D20
+0x00404962	ilt	j_std::bad_alloc::constructor			0x00544D20
 0x00404967	ilt				0x0057A520
 0x0040496C	ilt				0x004BF190
 0x00404971	ilt				0x00435DB0
@@ -2966,7 +2966,7 @@ address	kind	name	module	evidence	target
 0x004049E4	ilt	j_LeaderOptionHeader::vf1			0x005C6220
 0x004049E9	ilt				0x00597910
 0x004049EE	ilt				0x004BB180
-0x004049F3	ilt				0x00576E00
+0x004049F3	ilt	j_CCallResult<SteamWrapper,LeaderboardFindResult_t>::constructor_or_destructor			0x00576E00
 0x004049F8	ilt				0x0056F1C0
 0x004049FD	ilt	j_Audio_LoaderThread			0x005487D0
 0x00404A02	ilt				0x00448210
@@ -3023,7 +3023,7 @@ address	kind	name	module	evidence	target
 0x00404B01	ilt				0x004B1640
 0x00404B06	ilt				0x004E6950
 0x00404B0B	ilt				0x004DB560
-0x00404B10	ilt				0x005C9B30
+0x00404B10	ilt	j_MsgBoxOption::constructor			0x005C9B30
 0x00404B15	ilt				0x004F3330
 0x00404B1A	ilt				0x004F13F0
 0x00404B1F	ilt				0x004561E0
@@ -3085,12 +3085,12 @@ address	kind	name	module	evidence	target
 0x00404C37	ilt				0x00445C20
 0x00404C3C	ilt				0x00420D80
 0x00404C41	ilt	j_CVorbisDecoder::Decode			0x0058D1B0
-0x00404C46	ilt				0x00577E70
+0x00404C46	ilt	j_Subtitle::constructor_or_destructor			0x00577E70
 0x00404C4B	ilt				0x00441D30
 0x00404C50	ilt				0x004EFE30
 0x00404C55	ilt				0x00426390
 0x00404C5A	ilt				0x004448A0
-0x00404C5F	ilt				0x005BA460
+0x00404C5F	ilt	j_Overlay::destructor			0x005BA460
 0x00404C64	ilt				0x005478D0
 0x00404C69	ilt				0x004E5E70
 0x00404C6E	ilt				0x005B7E40
@@ -3124,14 +3124,14 @@ address	kind	name	module	evidence	target
 0x00404CFA	ilt				0x004267C0
 0x00404CFF	ilt				0x00590CA0
 0x00404D04	ilt				0x005B7060
-0x00404D09	ilt				0x005C33E0
+0x00404D09	ilt	j_Instructions::destructor			0x005C33E0
 0x00404D0E	ilt				0x004EF8B0
 0x00404D13	ilt				0x004A5AB0
 0x00404D18	ilt				0x00498250
 0x00404D1D	ilt				0x00547C40
-0x00404D22	ilt				0x005C5B60
+0x00404D22	ilt	j_LeaderOption::destructor			0x005C5B60
 0x00404D27	ilt	j_pdVibMxSetStopTime			0x00596970
-0x00404D2C	ilt				0x005C8640
+0x00404D2C	ilt	j_MainMenu::destructor			0x005C8640
 0x00404D31	ilt				0x004F99A0
 0x00404D36	ilt				0x0043B8E0
 0x00404D3B	ilt				0x004A5B10
@@ -3184,20 +3184,20 @@ address	kind	name	module	evidence	target
 0x00404E26	ilt				0x004EF240
 0x00404E2B	ilt				0x00439970
 0x00404E30	ilt				0x005979B0
-0x00404E35	ilt				0x005771C0
+0x00404E35	ilt	j_CCallResult<SteamWrapper,LeaderboardScoresDownloaded_t>::constructor_or_destructor			0x005771C0
 0x00404E3A	ilt				0x00447DE0
 0x00404E3F	ilt	j_Subtitle::AddLine			0x00577ED0
 0x00404E44	ilt				0x004AE780
 0x00404E49	ilt				0x00410A20
 0x00404E4E	ilt				0x004BCF70
 0x00404E53	ilt				0x0043BDF0
-0x00404E58	ilt				0x005C04E0
+0x00404E58	ilt	j_DlgOptionsCredits::destructor			0x005C04E0
 0x00404E5D	ilt				0x00596AC0
 0x00404E62	ilt				0x00454D00
 0x00404E67	ilt				0x005C33B0
 0x00404E6C	ilt				0x0059E830
 0x00404E71	ilt				0x004B2670
-0x00404E76	ilt				0x005CD640
+0x00404E76	ilt	j_RenderElement::constructor_or_destructor			0x005CD640
 0x00404E7B	ilt				0x005BD1A0
 0x00404E80	ilt				0x004F6160
 0x00404E85	ilt				0x004967E0
@@ -3221,11 +3221,11 @@ address	kind	name	module	evidence	target
 0x00404EDF	ilt				0x005C4220
 0x00404EE4	ilt				0x00577190
 0x00404EE9	ilt				0x0040F590
-0x00404EEE	ilt				0x00575D50
+0x00404EEE	ilt	j_CSoundXAudio2::constructor_or_destructor			0x00575D50
 0x00404EF3	ilt				0x004BB780
 0x00404EF8	ilt				0x004F4B90
 0x00404EFD	ilt				0x004392F0
-0x00404F02	ilt				0x005C2140
+0x00404F02	ilt	j_ScoreOverlay::constructor			0x005C2140
 0x00404F07	ilt				0x00555C70
 0x00404F0C	ilt				0x005469D0
 0x00404F11	ilt				0x00535880
@@ -3264,7 +3264,7 @@ address	kind	name	module	evidence	target
 0x00404FB6	ilt				0x0056F0D0
 0x00404FBB	ilt				0x0042DEC0
 0x00404FC0	ilt				0x005AF4F0
-0x00404FC5	ilt				0x005C9C30
+0x00404FC5	ilt	j_RenderElement::constructor_or_destructor			0x005C9C30
 0x00404FCA	ilt	j_RenderElement::vf2			0x00588020
 0x00404FCF	ilt				0x00516860
 0x00404FD4	ilt				0x004F16A0
@@ -3280,7 +3280,7 @@ address	kind	name	module	evidence	target
 0x00405006	ilt				0x005BD4D0
 0x0040500B	ilt				0x00595B40
 0x00405010	ilt				0x004B0A50
-0x00405015	ilt				0x005CAF10
+0x00405015	ilt	j_MissionMap::constructor			0x005CAF10
 0x0040501A	ilt				0x005920B0
 0x0040501F	ilt				0x0050C3B0
 0x00405024	ilt				0x0043E310
@@ -3457,7 +3457,7 @@ address	kind	name	module	evidence	target
 0x0040537B	ilt				0x004B16D0
 0x00405380	ilt				0x00434BB0
 0x00405385	ilt				0x005A04B0
-0x0040538A	ilt				0x005CD220
+0x0040538A	ilt	j_Overlay::destructor			0x005CD220
 0x0040538F	ilt				0x004AE070
 0x00405394	ilt				0x004ADEF0
 0x00405399	ilt				0x0056C3A0
@@ -3467,7 +3467,7 @@ address	kind	name	module	evidence	target
 0x004053AD	ilt				0x00564170
 0x004053B2	ilt				0x00447820
 0x004053B7	ilt				0x00413B70
-0x004053BC	ilt				0x005CD2C0
+0x004053BC	ilt	j_Fader::constructor			0x005CD2C0
 0x004053C1	ilt				0x00579330
 0x004053C6	ilt				0x0042C1A0
 0x004053CB	ilt				0x0041F030
@@ -3568,7 +3568,7 @@ address	kind	name	module	evidence	target
 0x004055A6	ilt				0x005C37C0
 0x004055AB	ilt				0x005B51A0
 0x004055B0	ilt				0x00449FC0
-0x004055B5	ilt				0x005CBAA0
+0x004055B5	ilt	j_SaveIndicator::destructor			0x005CBAA0
 0x004055BA	ilt				0x004BF2D0
 0x004055BF	ilt				0x00596F60
 0x004055C4	ilt				0x004F0FF0
@@ -3592,7 +3592,7 @@ address	kind	name	module	evidence	target
 0x0040561E	ilt				0x00580710
 0x00405623	ilt				0x0054BF30
 0x00405628	ilt				0x005CE5B0
-0x0040562D	ilt				0x005BEA70
+0x0040562D	ilt	j_DlgOptionsControls::constructor			0x005BEA70
 0x00405632	ilt				0x005764A0
 0x00405637	ilt				0x00439FC0
 0x0040563C	ilt				0x004F90E0
@@ -3606,7 +3606,7 @@ address	kind	name	module	evidence	target
 0x00405664	ilt				0x00586C80
 0x00405669	ilt				0x005842C0
 0x0040566E	ilt				0x004DAC10
-0x00405673	ilt				0x005BED20
+0x00405673	ilt	j_DlgOptionsCredits::constructor			0x005BED20
 0x00405678	ilt				0x005792D0
 0x0040567D	ilt				0x0059A400
 0x00405682	ilt				0x004EFA60
@@ -3619,7 +3619,7 @@ address	kind	name	module	evidence	target
 0x004056A5	ilt				0x00595260
 0x004056AA	ilt				0x004C89C0
 0x004056AF	ilt				0x00430BD0
-0x004056B4	ilt				0x005CD330
+0x004056B4	ilt	j_RenderElement::constructor_or_destructor			0x005CD330
 0x004056B9	ilt				0x00481460
 0x004056BE	ilt				0x00430150
 0x004056C3	ilt				0x00497F40
@@ -3715,7 +3715,7 @@ address	kind	name	module	evidence	target
 0x00405885	ilt				0x004460B0
 0x0040588A	ilt				0x0054DB70
 0x0040588F	ilt				0x00426310
-0x00405894	ilt				0x005BB2F0
+0x00405894	ilt	j_BtnBase::destructor			0x005BB2F0
 0x00405899	ilt	j_gdFsOpen			0x00596340
 0x0040589E	ilt				0x005823E0
 0x004058A3	ilt				0x00440450
@@ -3737,10 +3737,10 @@ address	kind	name	module	evidence	target
 0x004058F3	ilt				0x004ACC50
 0x004058F8	ilt				0x0050CC20
 0x004058FD	ilt				0x00442800
-0x00405902	ilt				0x005BAFA0
+0x00405902	ilt	j_BtnBase::constructor			0x005BAFA0
 0x00405907	ilt				0x00434D70
 0x0040590C	ilt				0x004A1820
-0x00405911	ilt				0x005C0CA0
+0x00405911	ilt	j_DlgTouchNotify::constructor			0x005C0CA0
 0x00405916	ilt				0x005BDBE0
 0x0040591B	ilt	j_DlgYesNo::vf14			0x005C1490
 0x00405920	ilt				0x00447620
@@ -3773,7 +3773,7 @@ address	kind	name	module	evidence	target
 0x004059A7	ilt				0x005951F0
 0x004059AC	ilt				0x00494C20
 0x004059B1	ilt				0x00426630
-0x004059B6	ilt				0x005BA190
+0x004059B6	ilt	j_RenderElement::constructor_or_destructor			0x005BA190
 0x004059BB	ilt				0x0054DED0
 0x004059C0	ilt				0x004C9C00
 0x004059C5	ilt				0x00450120
@@ -3840,7 +3840,7 @@ address	kind	name	module	evidence	target
 0x00405AF6	ilt				0x0050A0D0
 0x00405AFB	ilt	j_DlgOptionsCredits::vf14			0x005BEF60
 0x00405B00	ilt				0x004B5150
-0x00405B05	ilt				0x00577040
+0x00405B05	ilt	j_CCallResult<SteamWrapper,LeaderboardScoreUploaded_t>::constructor_or_destructor			0x00577040
 0x00405B0A	ilt				0x00444CA0
 0x00405B0F	ilt				0x004130A0
 0x00405B14	ilt				0x00422D80
@@ -3953,7 +3953,7 @@ address	kind	name	module	evidence	target
 0x00405D2B	ilt				0x004F1DE0
 0x00405D30	ilt	j_LoadIndicator::vf0			0x005CC390
 0x00405D35	ilt				0x0042DF00
-0x00405D3A	ilt				0x00577950
+0x00405D3A	ilt	j_CCallback<SteamWrapper,GameOverlayActivated_t,0>::constructor_or_destructor			0x00577950
 0x00405D3F	ilt				0x005715D0
 0x00405D44	ilt				0x0043A020
 0x00405D49	ilt				0x00426830
@@ -3976,7 +3976,7 @@ address	kind	name	module	evidence	target
 0x00405D9E	ilt				0x0059FBE0
 0x00405DA3	ilt				0x00443220
 0x00405DA8	ilt				0x00440D40
-0x00405DAD	ilt				0x005C1870
+0x00405DAD	ilt	j_GameOverMenu::destructor			0x005C1870
 0x00405DB2	ilt				0x004C5670
 0x00405DB7	ilt				0x0050B490
 0x00405DBC	ilt				0x0048A460
@@ -4012,7 +4012,7 @@ address	kind	name	module	evidence	target
 0x00405E52	ilt				0x00596A30
 0x00405E57	ilt				0x005C69C0
 0x00405E5C	ilt				0x004E9640
-0x00405E61	ilt				0x005CD490
+0x00405E61	ilt	j_Title::constructor			0x005CD490
 0x00405E66	ilt				0x00596440
 0x00405E6B	ilt				0x004C2390
 0x00405E70	ilt				0x00591AB0
@@ -4051,7 +4051,7 @@ address	kind	name	module	evidence	target
 0x00405F15	ilt				0x00433320
 0x00405F1A	ilt				0x004B69A0
 0x00405F1F	ilt				0x00450C90
-0x00405F24	ilt				0x005C6430
+0x00405F24	ilt	j_Leaderboards::destructor			0x005C6430
 0x00405F29	ilt	j_LeaderRow::vf1			0x005C57E0
 0x00405F2E	ilt				0x0051E640
 0x00405F33	ilt				0x0050EF30
@@ -4084,7 +4084,7 @@ address	kind	name	module	evidence	target
 0x00405FBA	ilt				0x004F11C0
 0x00405FBF	ilt				0x005BDAE0
 0x00405FC4	ilt				0x004E89C0
-0x00405FC9	ilt				0x00578EC0
+0x00405FC9	ilt	j_CApplication::constructor_or_destructor			0x00578EC0
 0x00405FCE	ilt				0x00590A90
 0x00405FD3	ilt				0x0043CDF0
 0x00405FD8	ilt				0x0043A630
@@ -4102,7 +4102,7 @@ address	kind	name	module	evidence	target
 0x00406014	ilt				0x004F0330
 0x00406019	ilt				0x004BE400
 0x0040601E	ilt				0x005954F0
-0x00406023	ilt				0x005C8C90
+0x00406023	ilt	j_NotImplementedOverlay::constructor			0x005C8C90
 0x00406028	ilt	j_Instructions::vf2			0x005C36E0
 0x0040602D	ilt	j_CVideoWin32::vf27			0x0058BD50
 0x00406032	ilt				0x0042A620
@@ -4177,7 +4177,7 @@ address	kind	name	module	evidence	target
 0x0040618B	ilt				0x005A5D10
 0x00406190	ilt				0x005CC810
 0x00406195	ilt				0x004C0360
-0x0040619A	ilt				0x005C1D70
+0x0040619A	ilt	j_GenericMenuOption::constructor			0x005C1D70
 0x0040619F	ilt				0x0059DD20
 0x004061A4	ilt				0x00411DA0
 0x004061A9	ilt				0x005780F0
@@ -4358,8 +4358,8 @@ address	kind	name	module	evidence	target
 0x00406514	ilt				0x0051EA00
 0x00406519	ilt				0x005BA720
 0x0040651E	ilt				0x005956B0
-0x00406523	ilt				0x005C51D0
-0x00406528	ilt				0x005BC3A0
+0x00406523	ilt	j_LeaderRow::constructor			0x005C51D0
+0x00406528	ilt	j_DlgBase::constructor			0x005BC3A0
 0x0040652D	ilt	j_MainMenu::vf0			0x005C90C0
 0x00406532	ilt	j_Fader::vf1			0x005CD340
 0x00406537	ilt				0x004B17D0
@@ -4409,7 +4409,7 @@ address	kind	name	module	evidence	target
 0x00406613	ilt				0x00586340
 0x00406618	ilt				0x004DD440
 0x0040661D	ilt				0x00424D70
-0x00406622	ilt				0x005BA2A0
+0x00406622	ilt	j_Achievements::constructor			0x005BA2A0
 0x00406627	ilt				0x0057A700
 0x0040662C	ilt				0x005B0500
 0x00406631	ilt				0x0051DA40
@@ -4472,7 +4472,7 @@ address	kind	name	module	evidence	target
 0x0040674E	ilt				0x005BB9A0
 0x00406753	ilt				0x00415AF0
 0x00406758	ilt				0x005A9E80
-0x0040675D	ilt				0x00576320
+0x0040675D	ilt	j_CSoundXAudio2::constructor_or_destructor			0x00576320
 0x00406762	ilt				0x00509140
 0x00406767	ilt				0x004113B0
 0x0040676C	ilt				0x004A42E0
@@ -4513,7 +4513,7 @@ address	kind	name	module	evidence	target
 0x0040681B	ilt				0x00565BD0
 0x00406820	ilt				0x00441910
 0x00406825	ilt				0x004AB380
-0x0040682A	ilt				0x005C6390
+0x0040682A	ilt	j_RenderElement::constructor_or_destructor			0x005C6390
 0x0040682F	ilt				0x00438500
 0x00406834	ilt				0x004D3CD0
 0x00406839	ilt				0x004136B0
@@ -4541,7 +4541,7 @@ address	kind	name	module	evidence	target
 0x004068A7	ilt				0x0043BC50
 0x004068AC	ilt				0x005894A0
 0x004068B1	ilt				0x004F9550
-0x004068B6	ilt				0x00588620
+0x004068B6	ilt	j_RenderElement::constructor_or_destructor			0x00588620
 0x004068BB	ilt				0x00439D40
 0x004068C0	ilt				0x00440B10
 0x004068C5	ilt				0x004436A0
@@ -4568,13 +4568,13 @@ address	kind	name	module	evidence	target
 0x0040692E	ilt				0x00438F30
 0x00406933	ilt				0x00596D30
 0x00406938	ilt				0x005504E0
-0x0040693D	ilt				0x005C5CC0
+0x0040693D	ilt	j_LeaderView::constructor			0x005C5CC0
 0x00406942	ilt	j_MsgBox::vf0			0x005CA5F0
 0x00406947	ilt				0x00549040
 0x0040694C	ilt				0x0041D620
 0x00406951	ilt				0x005BB950
 0x00406956	ilt	j_MissionMap::vf1			0x005CB020
-0x0040695B	ilt				0x005886E0
+0x0040695B	ilt	j_CVideo::constructor_or_destructor			0x005886E0
 0x00406960	ilt				0x005CB1C0
 0x00406965	ilt				0x005467D0
 0x0040696A	ilt				0x004B8B10
@@ -4622,7 +4622,7 @@ address	kind	name	module	evidence	target
 0x00406A3C	ilt				0x00519B40
 0x00406A41	ilt				0x00450C50
 0x00406A46	ilt				0x00415390
-0x00406A4B	ilt				0x00578710
+0x00406A4B	ilt	j_Subtitles::constructor_or_destructor			0x00578710
 0x00406A50	ilt				0x004BBD90
 0x00406A55	ilt				0x00587530
 0x00406A5A	ilt				0x00467BC0
@@ -4649,7 +4649,7 @@ address	kind	name	module	evidence	target
 0x00406AC3	ilt				0x004C18A0
 0x00406AC8	ilt				0x005370D0
 0x00406ACD	ilt				0x004984E0
-0x00406AD2	ilt				0x005C1E30
+0x00406AD2	ilt	j_RenderElement::constructor_or_destructor			0x005C1E30
 0x00406AD7	ilt				0x004BC950
 0x00406ADC	ilt				0x00597B00
 0x00406AE1	ilt				0x00572910
@@ -4682,13 +4682,13 @@ address	kind	name	module	evidence	target
 0x00406B68	ilt				0x00486870
 0x00406B6D	ilt				0x00559D20
 0x00406B72	ilt				0x004B7DA0
-0x00406B77	ilt				0x005CA570
+0x00406B77	ilt	j_MsgBox::constructor			0x005CA570
 0x00406B7C	ilt				0x004BD840
 0x00406B81	ilt				0x004BB480
 0x00406B86	ilt				0x00486580
 0x00406B8B	ilt				0x005B1730
 0x00406B90	ilt				0x00587E00
-0x00406B95	ilt				0x005CBE30
+0x00406B95	ilt	j_LoadIndicator::constructor			0x005CBE30
 0x00406B9A	ilt				0x00596A20
 0x00406B9F	ilt				0x004BDAC0
 0x00406BA4	ilt				0x00588890
@@ -4716,10 +4716,10 @@ address	kind	name	module	evidence	target
 0x00406C12	ilt				0x0044FDC0
 0x00406C17	ilt				0x004ADC90
 0x00406C1C	ilt				0x004C55D0
-0x00406C21	ilt				0x005CC450
+0x00406C21	ilt	j_SaveLoadMenu::constructor			0x005CC450
 0x00406C26	ilt				0x004267D0
 0x00406C2B	ilt				0x00599370
-0x00406C30	ilt				0x005CAC90
+0x00406C30	ilt	j_PauseMenu::destructor			0x005CAC90
 0x00406C35	ilt				0x004AE880
 0x00406C3A	ilt				0x00544000
 0x00406C3F	ilt				0x00584EC0
@@ -4784,7 +4784,7 @@ address	kind	name	module	evidence	target
 0x00406D66	ilt				0x005C6710
 0x00406D6B	ilt				0x004B4FA0
 0x00406D70	ilt				0x00595D60
-0x00406D75	ilt				0x005BC5D0
+0x00406D75	ilt	j_DlgBase::destructor			0x005BC5D0
 0x00406D7A	ilt	j_CVideoWin32::CreateTexture			0x0058BBD0
 0x00406D7F	ilt				0x004E6840
 0x00406D84	ilt				0x004CCFB0
@@ -4811,7 +4811,7 @@ address	kind	name	module	evidence	target
 0x00406DED	ilt	j_Instructions::vf6			0x005C3850
 0x00406DF2	ilt				0x00444520
 0x00406DF7	ilt				0x00544040
-0x00406DFC	ilt				0x005C0CF0
+0x00406DFC	ilt	j_DlgTouchNotify::destructor			0x005C0CF0
 0x00406E01	ilt				0x004B1520
 0x00406E06	ilt				0x004B17C0
 0x00406E0B	ilt				0x00591AF0
@@ -4822,7 +4822,7 @@ address	kind	name	module	evidence	target
 0x00406E24	ilt				0x005C4130
 0x00406E29	ilt				0x00564630
 0x00406E2E	ilt				0x005792B0
-0x00406E33	ilt				0x00577610
+0x00406E33	ilt	j_CCallback<SteamWrapper,GameOverlayActivated_t,0>::constructor_or_destructor			0x00577610
 0x00406E38	ilt				0x0043CA60
 0x00406E3D	ilt				0x004D9710
 0x00406E42	ilt				0x0044D320
@@ -4856,7 +4856,7 @@ address	kind	name	module	evidence	target
 0x00406ECE	ilt				0x005911E0
 0x00406ED3	ilt				0x004EB830
 0x00406ED8	ilt				0x00436B20
-0x00406EDD	ilt				0x005C6190
+0x00406EDD	ilt	j_LeaderOptionHeader::destructor			0x005C6190
 0x00406EE2	ilt				0x0049DBB0
 0x00406EE7	ilt				0x00591B10
 0x00406EEC	ilt				0x0045F320
@@ -11938,8 +11938,8 @@ address	kind	name	module	evidence	target
 0x00544CC0	start
 0x00544CD0	start
 0x00544CF0	start
-0x00544D20	start
-0x00544D50	start
+0x00544D20	start	std::bad_alloc::constructor		vtable-store
+0x00544D50	start	std::bad_alloc::destructor		vtable-store
 0x00544D60	start	std::bad_alloc::vf0		rtti
 0x00544D90	start
 0x00544DA0	start
@@ -11994,7 +11994,7 @@ address	kind	name	module	evidence	target
 0x005468F0	start		KATANA/FRAMEWORK/AudioPlayback.cpp	between
 0x00546910	start		KATANA/FRAMEWORK/AudioPlayback.cpp	between
 0x00546920	start		KATANA/FRAMEWORK/AudioPlayback.cpp	between
-0x00546990	start		KATANA/FRAMEWORK/AudioPlayback.cpp	between
+0x00546990	start	std::bad_alloc::constructor	KATANA/FRAMEWORK/AudioPlayback.cpp	vtable-store;between
 0x005469C0	start		KATANA/FRAMEWORK/AudioPlayback.cpp	between
 0x005469D0	start		KATANA/FRAMEWORK/AudioPlayback.cpp	between
 0x005469E0	start		KATANA/FRAMEWORK/AudioPlayback.cpp	between
@@ -12816,7 +12816,7 @@ address	kind	name	module	evidence	target
 0x00575D00	start
 0x00575D10	start
 0x00575D20	start
-0x00575D50	start
+0x00575D50	start	CSoundXAudio2::constructor_or_destructor		vtable-store
 0x00575DB0	start	CSoundXAudio2::vf6		rtti
 0x00575DC0	start	CSoundXAudio2::vf7		rtti
 0x00575DD0	start	CSoundXAudio2::vf1		rtti
@@ -12827,7 +12827,7 @@ address	kind	name	module	evidence	target
 0x00576140	start
 0x00576150	start	CSoundXAudio2::vf4		rtti
 0x00576190	start
-0x00576320	start
+0x00576320	start	CSoundXAudio2::constructor_or_destructor		vtable-store
 0x005763A0	start	CSoundXAudio2::vf0		rtti
 0x00576430	start
 0x00576460	start
@@ -12844,7 +12844,7 @@ address	kind	name	module	evidence	target
 0x00576890	start
 0x00576910	start
 0x00576940	start
-0x00576950	start
+0x00576950	start	CCallbackBase::constructor_or_destructor		vtable-store
 0x00576970	start
 0x00576980	start
 0x005769B0	start
@@ -12857,24 +12857,24 @@ address	kind	name	module	evidence	target
 0x00576B50	start
 0x00576D40	start
 0x00576DD0	start
-0x00576E00	start
+0x00576E00	start	CCallResult<SteamWrapper,LeaderboardFindResult_t>::constructor_or_destructor		vtable-store
 0x00576E30	start
 0x00576E90	start
-0x00576EC0	start
+0x00576EC0	start	CCallResult<SteamWrapper,LeaderboardFindResult_t>::constructor_or_destructor		vtable-store
 0x00576F00	start	CCallResult<SteamWrapper,LeaderboardFindResult_t>::vf1		rtti
 0x00576F30	start	CCallResult<SteamWrapper,LeaderboardFindResult_t>::vf0		rtti
 0x00576F70	start	CCallResult<SteamWrapper,LeaderboardFindResult_t>::vf2		rtti
-0x00576F80	start
+0x00576F80	start	CCallResult<SteamWrapper,LeaderboardScoreUploaded_t>::constructor_or_destructor		vtable-store
 0x00576FB0	start
 0x00577010	start
-0x00577040	start
+0x00577040	start	CCallResult<SteamWrapper,LeaderboardScoreUploaded_t>::constructor_or_destructor		vtable-store
 0x00577080	start	CCallResult<SteamWrapper,LeaderboardScoreUploaded_t>::vf1		rtti
 0x005770B0	start	CCallResult<SteamWrapper,LeaderboardScoreUploaded_t>::vf0		rtti
 0x005770F0	start	CCallResult<SteamWrapper,LeaderboardScoreUploaded_t>::vf2		rtti
-0x00577100	start
+0x00577100	start	CCallResult<SteamWrapper,LeaderboardScoresDownloaded_t>::constructor_or_destructor		vtable-store
 0x00577130	start
 0x00577190	start
-0x005771C0	start
+0x005771C0	start	CCallResult<SteamWrapper,LeaderboardScoresDownloaded_t>::constructor_or_destructor		vtable-store
 0x00577200	start	CCallResult<SteamWrapper,LeaderboardScoresDownloaded_t>::vf1		rtti
 0x00577230	start	CCallResult<SteamWrapper,LeaderboardScoresDownloaded_t>::vf0		rtti
 0x00577270	start	CCallResult<SteamWrapper,LeaderboardScoresDownloaded_t>::vf2		rtti
@@ -12883,22 +12883,22 @@ address	kind	name	module	evidence	target
 0x00577490	start
 0x00577550	start
 0x005775D0	start
-0x00577610	start
+0x00577610	start	CCallback<SteamWrapper,GameOverlayActivated_t,0>::constructor_or_destructor		vtable-store
 0x00577630	start	CCallback<SteamWrapper,GameOverlayActivated_t,0>::vf1		rtti
 0x00577650	start	CCallback<SteamWrapper,GameOverlayActivated_t,0>::vf0		rtti
 0x00577670	start	CCallback<SteamWrapper,GameOverlayActivated_t,0>::vf2		rtti
 0x00577680	start
 0x005776E0	start
 0x005777E0	start
-0x00577950	start
+0x00577950	start	CCallback<SteamWrapper,GameOverlayActivated_t,0>::constructor_or_destructor		vtable-store
 0x005779B0	start
-0x005779E0	start
+0x005779E0	start	CCallback<SteamWrapper,GameOverlayActivated_t,0>::destructor		vtable-store
 0x00577B60	start
 0x00577C30	start
 0x00577D60	start
 0x00577D90	start
-0x00577E20	start
-0x00577E70	start
+0x00577E20	start	Subtitle::constructor_or_destructor		vtable-store
+0x00577E70	start	Subtitle::constructor_or_destructor		vtable-store
 0x00577ED0	start	Subtitle::AddLine	KATANA/FRAMEWORK/Subtitles.cpp	self;file
 0x00577F30	start		KATANA/FRAMEWORK/Subtitles.cpp	between
 0x00577F60	start		KATANA/FRAMEWORK/Subtitles.cpp	between
@@ -12910,9 +12910,9 @@ address	kind	name	module	evidence	target
 0x00578480	start	Subtitle::vf0	KATANA/FRAMEWORK/Subtitles.cpp	rtti;between
 0x00578500	start		KATANA/FRAMEWORK/Subtitles.cpp	between
 0x00578580	start		KATANA/FRAMEWORK/Subtitles.cpp	between
-0x00578650	start		KATANA/FRAMEWORK/Subtitles.cpp	between
-0x00578710	start		KATANA/FRAMEWORK/Subtitles.cpp	between
-0x00578720	start	Subtitles::Load	KATANA/FRAMEWORK/Subtitles.cpp	self;file
+0x00578650	start	Subtitles::constructor_or_destructor	KATANA/FRAMEWORK/Subtitles.cpp	vtable-store;between
+0x00578710	start	Subtitles::constructor_or_destructor	KATANA/FRAMEWORK/Subtitles.cpp	vtable-store;between
+0x00578720	start	Subtitles::Load	KATANA/FRAMEWORK/Subtitles.cpp	self;file;vtable-store
 0x005788C7	alias				0x00578720
 0x005788F4	alias				0x00578720
 0x00578910	alias				0x00578720
@@ -12930,8 +12930,8 @@ address	kind	name	module	evidence	target
 0x00578DC0	start
 0x00578DE0	start
 0x00578E60	start
-0x00578E90	start
-0x00578EC0	start
+0x00578E90	start	CApplication::constructor_or_destructor		vtable-store
+0x00578EC0	start	CApplication::constructor_or_destructor		vtable-store
 0x00578EF0	start	CApplication::MapDCMemory	KATANA/FRAMEWORK/system.cpp	self;file
 0x00578F40	start		KATANA/FRAMEWORK/system.cpp	between
 0x00578F60	start		KATANA/FRAMEWORK/system.cpp	between
@@ -12974,7 +12974,7 @@ address	kind	name	module	evidence	target
 0x00579CD0	start		KATANA/FRAMEWORK/system.cpp	between
 0x00579D50	start		KATANA/FRAMEWORK/system.cpp	between
 0x00579E10	start		KATANA/FRAMEWORK/system.cpp	between
-0x00579E70	start		KATANA/FRAMEWORK/system.cpp	between
+0x00579E70	start	CApplication::constructor_or_destructor	KATANA/FRAMEWORK/system.cpp	vtable-store;between
 0x00579F20	start	CApplication::vf0	KATANA/FRAMEWORK/system.cpp	rtti;between
 0x00579F70	start	CApplication::LocalizationInit	KATANA/FRAMEWORK/system.cpp	self;file
 0x0057A1B0	start
@@ -13358,16 +13358,16 @@ address	kind	name	module	evidence	target
 0x005882C0	start
 0x00588310	start
 0x00588360	start
-0x005883C0	start
+0x005883C0	start	RenderElement::constructor_or_destructor		vtable-store
 0x005884C0	start	RenderElement::vf1		rtti
 0x005884D0	start	RenderElement::vf3		rtti
 0x005884E0	start	RenderElement::vf4		rtti
 0x005884F0	start	RenderElement::vf5		rtti
 0x00588500	start	RenderElement::vf6		rtti
 0x00588510	start	RenderElement::vf7		rtti
-0x00588520	start
-0x00588620	start
-0x005886E0	start
+0x00588520	start	RenderElement::constructor_or_destructor		vtable-store
+0x00588620	start	RenderElement::constructor_or_destructor		vtable-store
+0x005886E0	start	CVideo::constructor_or_destructor		vtable-store
 0x00588750	start	CVideo::vf28		rtti
 0x00588760	start	CVideo::vf29		rtti
 0x00588770	start	CVideo::vf32		rtti
@@ -13378,7 +13378,7 @@ address	kind	name	module	evidence	target
 0x005887E0	start	CVideo::vf42		rtti
 0x005887F0	start	CVideo::vf43		rtti
 0x00588800	start	CVideo::vf44		rtti
-0x00588810	start
+0x00588810	start	CVideo::constructor_or_destructor		vtable-store
 0x00588890	start
 0x005888F0	start	RenderElement::vf0		rtti
 0x00588920	start
@@ -13405,13 +13405,13 @@ address	kind	name	module	evidence	target
 0x00589AC0	start
 0x00589F30	start
 0x00589F70	start
-0x00589F80	start
+0x00589F80	start	CVideoWin32::constructor		vtable-store
 0x0058A000	start	CVideoWin32::vf40		rtti
 0x0058A010	start	CVideoWin32::vf41		rtti
 0x0058A020	start	CVideoWin32::vf43		rtti
 0x0058A030	start	CVideoWin32::vf44		rtti
 0x0058A040	start	CVideoWin32::vf3		rtti
-0x0058A050	start
+0x0058A050	start	CVideoWin32::destructor		vtable-store
 0x0058A1E0	start
 0x0058A270	start
 0x0058A3B0	start
@@ -13565,8 +13565,8 @@ address	kind	name	module	evidence	target
 0x00591B00	start
 0x00591B10	start
 0x00591BA0	start
-0x00591BB0	start
-0x00591BD0	start
+0x00591BB0	start	CSound::constructor		vtable-store
+0x00591BD0	start	CSound::destructor		vtable-store
 0x00591BE0	start	CSound::vf5		rtti
 0x00591C20	start	CSound::vf6		rtti
 0x00591C30	start	CSound::vf7		rtti
@@ -14425,11 +14425,11 @@ address	kind	name	module	evidence	target
 0x005BA020	start
 0x005BA030	start
 0x005BA040	start
-0x005BA070	start
-0x005BA190	thunk				0x004068B6
+0x005BA070	start	AchievementIcon::constructor		vtable-store
+0x005BA190	thunk	j_RenderElement::constructor_or_destructor			0x004068B6
 0x005BA1A0	start	AchievementIcon::vf1		rtti
-0x005BA2A0	start
-0x005BA460	thunk				0x0040538A
+0x005BA2A0	start	Achievements::constructor		vtable-store
+0x005BA460	thunk	j_Overlay::destructor			0x0040538A
 0x005BA470	start
 0x005BA520	start	Achievements::vf4		rtti
 0x005BA570	start	Achievements::vf3		rtti
@@ -14442,19 +14442,19 @@ address	kind	name	module	evidence	target
 0x005BAC40	start	Achievements::vf1		rtti
 0x005BAEB4	start
 0x005BAEBA	alias				0x005BAEB4
-0x005BAFA0	start
+0x005BAFA0	start	BtnBase::constructor		vtable-store
 0x005BB2B0	start	BtnBase::vf8		rtti
 0x005BB2C0	start	BtnBase::vf10		rtti
 0x005BB2D0	start	BtnBase::vf12		rtti
 0x005BB2E0	start	BtnBase::vf13		rtti
-0x005BB2F0	start
+0x005BB2F0	start	BtnBase::destructor		vtable-store
 0x005BB300	start	BtnBase::vf9		rtti
 0x005BB330	start	BtnBase::vf11		rtti
 0x005BB360	start	BtnBase::vf1		rtti
 0x005BB480	start	BtnBase::vf0		rtti
-0x005BB4B0	start
+0x005BB4B0	start	BtnSwitch::constructor		vtable-store
 0x005BB6B0	start	BtnSwitch::vf12		rtti
-0x005BB6C0	start
+0x005BB6C0	start	BtnSwitch::destructor		vtable-store
 0x005BB6D0	start	BtnSwitch::vf9		rtti
 0x005BB6E0	start	BtnSwitch::vf10		rtti
 0x005BB730	start	BtnSwitch::vf11		rtti
@@ -14504,9 +14504,9 @@ address	kind	name	module	evidence	target
 0x005BC250	start
 0x005BC290	start
 0x005BC330	start
-0x005BC3A0	start
+0x005BC3A0	start	DlgBase::constructor		vtable-store
 0x005BC590	start
-0x005BC5D0	start
+0x005BC5D0	start	DlgBase::destructor		vtable-store
 0x005BC6F0	start	DlgBase::vf0		rtti
 0x005BC720	start
 0x005BC730	start
@@ -14584,17 +14584,17 @@ address	kind	name	module	evidence	target
 0x005BDC20	start
 0x005BDCF4	alias				0x005BDC20
 0x005BDD50	start
-0x005BDE00	start
-0x005BDED0	start
+0x005BDE00	start	DlgBonus::constructor		vtable-store
+0x005BDED0	start	DlgBonus::destructor		vtable-store
 0x005BDF80	start
 0x005BE010	start	DlgBonus::vf0		rtti
 0x005BE040	start
 0x005BE1C0	start
 0x005BE2B0	start	DlgBonus::vf13		rtti
-0x005BE3F0	start
+0x005BE3F0	start	DlgJapInstructions::constructor		vtable-store
 0x005BE460	start	DlgJapInstructions::vf13		rtti
 0x005BE470	start	DlgJapInstructions::vf14		rtti
-0x005BE480	start
+0x005BE480	start	DlgJapInstructions::destructor		vtable-store
 0x005BE490	thunk	DlgJapInstructions::vf11		rtti	0x00406A69
 0x005BE4A0	start
 0x005BE600	start	DlgJapInstructions::vf0		rtti
@@ -14602,24 +14602,24 @@ address	kind	name	module	evidence	target
 0x005BE650	start	DlgJapInstructions::vf1		rtti
 0x005BE760	start
 0x005BE790	start
-0x005BE800	start
-0x005BE860	start
+0x005BE800	start	DlgOptionsSettings::constructor		vtable-store
+0x005BE860	start	DlgOptionsSettings::destructor		vtable-store
 0x005BE870	start	DlgOptionsSettings::vf10		rtti
 0x005BE9C0	start	DlgOptionsSettings::vf4		rtti
 0x005BEA00	start	DlgOptionsSettings::vf6		rtti
-0x005BEA70	start
+0x005BEA70	start	DlgOptionsControls::constructor		vtable-store
 0x005BEAB0	start	DlgOptionsControls::vf13		rtti
 0x005BEAC0	start	DlgOptionsControls::vf14		rtti
-0x005BEAD0	start
+0x005BEAD0	start	DlgOptionsControls::destructor		vtable-store
 0x005BEAE0	start	DlgOptionsControls::vf10		rtti
 0x005BECC0	start	DlgOptionsControls::vf1		rtti
-0x005BED20	start
+0x005BED20	start	DlgOptionsCredits::constructor		vtable-store
 0x005BEF50	start	DlgOptionsCredits::vf13		rtti
 0x005BEF60	start	DlgOptionsCredits::vf14		rtti
 0x005BEF70	start	DlgOptionsCredits::vf2		rtti
 0x005BEFF0	start
-0x005BF2B0	start
-0x005BF310	start
+0x005BF2B0	start	DlgOptions::constructor		vtable-store
+0x005BF310	start	DlgOptions::destructor		vtable-store
 0x005BF3B0	start	DlgOptions::vf10		rtti
 0x005BF530	start	DlgOptions::vf11		rtti
 0x005BF550	start	DlgOptionsSettings::vf0		rtti
@@ -14637,33 +14637,33 @@ address	kind	name	module	evidence	target
 0x005C0225	alias				0x005C0060
 0x005C02E0	start	DlgOptions::vf1		rtti
 0x005C0480	start	DlgOptionsSettings::vf1		rtti
-0x005C04E0	start
+0x005C04E0	start	DlgOptionsCredits::destructor		vtable-store
 0x005C0590	start	DlgOptionsCredits::vf0		rtti
 0x005C05C0	start
 0x005C06F0	start
 0x005C0880	start
 0x005C09C0	start	DlgOptionsSettings::vf13		rtti
 0x005C0BE0	start	DlgOptions::vf13		rtti
-0x005C0CA0	start
+0x005C0CA0	start	DlgTouchNotify::constructor		vtable-store
 0x005C0CD0	start	DlgTouchNotify::vf13		rtti
 0x005C0CE0	start	DlgTouchNotify::vf14		rtti
-0x005C0CF0	start
+0x005C0CF0	start	DlgTouchNotify::destructor		vtable-store
 0x005C0D00	start
 0x005C0D90	start	DlgTouchNotify::vf0		rtti
 0x005C0DC0	start	DlgTouchNotify::vf1		rtti
 0x005C0E60	start	DlgTouchNotify::vf5		rtti
 0x005C0F30	start	DlgTouchNotify::vf6		rtti
 0x005C1010	start	DlgTouchNotify::vf7		rtti
-0x005C10E0	start
-0x005C1180	start
+0x005C10E0	start	DlgYesNo::constructor		vtable-store
+0x005C1180	start	DlgYesNo::destructor		vtable-store
 0x005C1190	start	DlgYesNo::vf10		rtti
 0x005C1460	start	DlgYesNo::vf0		rtti
 0x005C1490	start	DlgYesNo::vf14		rtti
 0x005C14C0	start	DlgYesNo::vf1		rtti
 0x005C1620	start	DlgYesNo::vf13		rtti
-0x005C1800	start
+0x005C1800	start	GameOverMenu::constructor		vtable-store
 0x005C1860	start	GameOverMenu::vf14		rtti
-0x005C1870	start
+0x005C1870	start	GameOverMenu::destructor		vtable-store
 0x005C1880	start	GameOverMenu::vf10		rtti
 0x005C18A0	thunk	GameOverMenu::vf11		rtti	0x00406A69
 0x005C18B0	thunk	GameOverMenu::vf1		rtti	0x00401B8B
@@ -14680,36 +14680,36 @@ address	kind	name	module	evidence	target
 0x005C1AB0	start
 0x005C1AD0	start
 0x005C1B50	start	GameOverMenu::vf13		rtti
-0x005C1D70	start
-0x005C1E30	thunk				0x004068B6
+0x005C1D70	start	GenericMenuOption::constructor		vtable-store
+0x005C1E30	thunk	j_RenderElement::constructor_or_destructor			0x004068B6
 0x005C1E40	start	GenericMenuOption::vf1		rtti
-0x005C1F60	start
-0x005C1FA0	start
+0x005C1F60	start	GenericMenu::constructor		vtable-store
+0x005C1FA0	start	GenericMenu::destructor		vtable-store
 0x005C1FE0	start
 0x005C2050	start	GenericMenu::vf4		rtti
 0x005C2080	start	GenericMenu::vf6		rtti
 0x005C209F	start
 0x005C20D1	alias				0x005C209F
 0x005C20F0	start	GenericMenu::vf7		rtti
-0x005C2140	start
-0x005C22D0	thunk				0x0040538A
+0x005C2140	start	ScoreOverlay::constructor		vtable-store
+0x005C22D0	thunk	j_Overlay::destructor			0x0040538A
 0x005C22E0	start	ScoreOverlay::vf1		rtti
-0x005C2310	start
-0x005C2770	thunk				0x0040538A
+0x005C2310	start	UpsellScreen::constructor		vtable-store
+0x005C2770	thunk	j_Overlay::destructor			0x0040538A
 0x005C2780	start	UpsellScreen::vf1		rtti
 0x005C28E0	start	GenericMenuOption::vf0		rtti
 0x005C2910	start	GenericMenu::vf0		rtti
-0x005C2970	start
+0x005C2970	start	GenericMenuOption::constructor		vtable-store
 0x005C2C70	start
 0x005C2CFE	alias				0x005C2C70
 0x005C2DD9	alias				0x005C2C70
 0x005C3040	start	GenericMenu::vf5		rtti
 0x005C30C0	start	ScoreOverlay::vf0		rtti
 0x005C30F0	start	UpsellScreen::vf0		rtti
-0x005C3120	start
+0x005C3120	start	GenericMenu::constructor		vtable-store
 0x005C3290	start	GenericMenu::vf1		rtti
 0x005C33B0	start
-0x005C33E0	start
+0x005C33E0	start	Instructions::destructor		vtable-store
 0x005C3460	start	Instructions::vf1		rtti
 0x005C36E0	start	Instructions::vf2		rtti
 0x005C3770	start
@@ -14777,26 +14777,26 @@ address	kind	name	module	evidence	target
 0x005C4C23	alias				0x005C4640
 0x005C4C25	alias				0x005C4640
 0x005C4C46	alias				0x005C4640
-0x005C4F30	start
+0x005C4F30	start	Instructions::constructor		vtable-store
 0x005C5190	start
 0x005C51C0	start
-0x005C51D0	start
+0x005C51D0	start	LeaderRow::constructor		vtable-store
 0x005C5686	alias				0x005C51D0
 0x005C57E0	start	LeaderRow::vf1		rtti
-0x005C5880	start
-0x005C5B60	start
+0x005C5880	start	LeaderOption::constructor		vtable-store
+0x005C5B60	start	LeaderOption::destructor		vtable-store
 0x005C5BF0	start	LeaderOption::vf1		rtti
-0x005C5CC0	start
-0x005C5DE0	start
+0x005C5CC0	start	LeaderView::constructor		vtable-store
+0x005C5DE0	start	LeaderView::destructor		vtable-store
 0x005C5E70	start	LeaderView::vf1		rtti
-0x005C5F40	start
-0x005C6190	start
+0x005C5F40	start	LeaderOptionHeader::constructor		vtable-store
+0x005C6190	start	LeaderOptionHeader::destructor		vtable-store
 0x005C6220	start	LeaderOptionHeader::vf1		rtti
-0x005C62F0	start
-0x005C6390	thunk				0x004068B6
+0x005C62F0	start	PageArrow::constructor		vtable-store
+0x005C6390	thunk	j_RenderElement::constructor_or_destructor			0x004068B6
 0x005C63A0	start	PageArrow::vf1		rtti
-0x005C6420	start
-0x005C6430	start
+0x005C6420	start	CStatsListener::constructor_or_destructor		vtable-store
+0x005C6430	start	Leaderboards::destructor		vtable-store
 0x005C6450	start
 0x005C65F0	start
 0x005C6710	start
@@ -14811,14 +14811,14 @@ address	kind	name	module	evidence	target
 0x005C6DB0	start	Leaderboards::vf5		rtti
 0x005C6DF0	start	Leaderboards::vf6		rtti
 0x005C6EB0	start	Leaderboards::vf7		rtti
-0x005C6EC0	start
+0x005C6EC0	start	LeaderRow::destructor		vtable-store
 0x005C6F80	start	LeaderOption::vf0		rtti
 0x005C7030	start	LeaderView::vf0		rtti
 0x005C70E0	start	LeaderOptionHeader::vf0		rtti
 0x005C7190	start	PageArrow::vf0		rtti
-0x005C71C0	start
+0x005C71C0	start	Leaderboards::constructor		vtable-store
 0x005C72F0	start	Leaderboards::vf0		rtti
-0x005C7330	start
+0x005C7330	start	PageArrow::constructor		vtable-store
 0x005C7804	start
 0x005C7960	start	Leaderboards::vf4		rtti
 0x005C79D0	start
@@ -14830,11 +14830,11 @@ address	kind	name	module	evidence	target
 0x005C7E6B	alias				0x005C7E65
 0x005C7F20	start
 0x005C7F50	start
-0x005C7F90	start
+0x005C7F90	start	MainMenuOption::constructor		vtable-store
 0x005C80A0	start
 0x005C80D0	start	MainMenuOption::vf1		rtti
 0x005C8200	start
-0x005C8640	start
+0x005C8640	start	MainMenu::destructor		vtable-store
 0x005C8670	start	MainMenu::vf4		rtti
 0x005C86D0	start	MainMenu::vf5		rtti
 0x005C8790	start	MainMenu::vf6		rtti
@@ -14846,28 +14846,28 @@ address	kind	name	module	evidence	target
 0x005C8AE0	start	MainMenu::vf3		rtti
 0x005C8B20	start
 0x005C8C80	start
-0x005C8C90	start
-0x005C8DA0	thunk				0x0040538A
+0x005C8C90	start	NotImplementedOverlay::constructor		vtable-store
+0x005C8DA0	thunk	j_Overlay::destructor			0x0040538A
 0x005C8DB0	start	NotImplementedOverlay::vf1		rtti
-0x005C8E00	start
+0x005C8E00	start	StoreView::destructor		vtable-store
 0x005C8E20	start
 0x005C8F63	alias				0x005C8E20
 0x005C8FF0	start	StoreView::vf1		rtti
 0x005C9020	start	StoreView::vf4		rtti
-0x005C9030	start
+0x005C9030	start	MainMenuOption::constructor_or_destructor		vtable-store
 0x005C9067	start
 0x005C9082	alias				0x005C9067
 0x005C90C0	start	MainMenu::vf0		rtti
 0x005C9110	start	NotImplementedOverlay::vf0		rtti
-0x005C9140	start
+0x005C9140	start	StoreView::constructor		vtable-store
 0x005C92A0	start	StoreView::vf0		rtti
 0x005C92E0	start	MainMenuOption::vf0		rtti
 0x005C9390	start
 0x005C9482	alias				0x005C9390
 0x005C970C	alias				0x005C9390
 0x005C9840	start	MainMenu::vf1		rtti
-0x005C9B30	start
-0x005C9C30	thunk				0x004068B6
+0x005C9B30	start	MsgBoxOption::constructor		vtable-store
+0x005C9C30	thunk	j_RenderElement::constructor_or_destructor			0x004068B6
 0x005C9C40	start	MsgBoxOption::vf1		rtti
 0x005C9D10	start
 0x005C9D60	start
@@ -14877,15 +14877,15 @@ address	kind	name	module	evidence	target
 0x005CA050	start	MsgBox::vf1		rtti
 0x005CA1A0	start	MsgBoxOption::vf0		rtti
 0x005CA1D0	start
-0x005CA4F0	start
-0x005CA570	start
+0x005CA4F0	start	MsgBox::destructor		vtable-store
+0x005CA570	start	MsgBox::constructor		vtable-store
 0x005CA5F0	start	MsgBox::vf0		rtti
-0x005CA690	start
-0x005CA750	start
+0x005CA690	start	MsgBox::constructor		vtable-store
+0x005CA750	start	PauseMenuOption::constructor		vtable-store
 0x005CA8A0	start	PauseMenuOption::vf1		rtti
 0x005CA920	start
-0x005CA930	start
-0x005CAC90	start
+0x005CA930	start	PauseMenu::constructor		vtable-store
+0x005CAC90	start	PauseMenu::destructor		vtable-store
 0x005CACC0	start
 0x005CAD00	start	PauseMenu::vf4		rtti
 0x005CAD90	start	PauseMenu::vf5		rtti
@@ -14893,10 +14893,10 @@ address	kind	name	module	evidence	target
 0x005CAE90	start	PauseMenu::vf7		rtti
 0x005CAEF0	thunk	PauseMenu::vf8		rtti	0x00406875
 0x005CAF00	thunk	PauseMenu::vf9		rtti	0x00404D40
-0x005CAF10	start
-0x005CB010	thunk				0x0040538A
+0x005CAF10	start	MissionMap::constructor		vtable-store
+0x005CB010	thunk	j_Overlay::destructor			0x0040538A
 0x005CB020	start	MissionMap::vf1		rtti
-0x005CB0E0	start
+0x005CB0E0	start	PauseMenuOption::destructor		vtable-store
 0x005CB170	start	PauseMenu::vf0		rtti
 0x005CB1C0	start
 0x005CB259	alias				0x005CB1C0
@@ -14905,26 +14905,26 @@ address	kind	name	module	evidence	target
 0x005CB6A0	start	PauseMenuOption::vf0		rtti
 0x005CB750	start	PauseMenu::vf1		rtti
 0x005CB8B0	alias				0x005CB750
-0x005CB970	start
-0x005CBAA0	start
+0x005CB970	start	SaveIndicator::constructor		vtable-store
+0x005CBAA0	start	SaveIndicator::destructor		vtable-store
 0x005CBAC0	start	SaveIndicator::vf1		rtti
-0x005CBB50	start
+0x005CBB50	start	SaveIndicatorWarning::destructor		vtable-store
 0x005CBB60	start	SaveIndicatorWarning::vf1		rtti
 0x005CBC00	start
-0x005CBC10	start
-0x005CBD40	start
+0x005CBC10	start	LoadIndicator::constructor		vtable-store
+0x005CBD40	start	LoadIndicator::destructor		vtable-store
 0x005CBD50	start	LoadIndicator::vf1		rtti
 0x005CBDE0	start
-0x005CBE30	start
+0x005CBE30	start	LoadIndicator::constructor		vtable-store
 0x005CBF50	start
 0x005CBF80	start	SaveIndicator::vf0		rtti
-0x005CBFC0	start
+0x005CBFC0	start	SaveIndicatorWarning::constructor		vtable-store
 0x005CC360	start	SaveIndicatorWarning::vf0		rtti
 0x005CC390	start	LoadIndicator::vf0		rtti
 0x005CC3C0	start
 0x005CC420	start
-0x005CC450	start
-0x005CC4C0	start
+0x005CC450	start	SaveLoadMenu::constructor		vtable-store
+0x005CC4C0	start	SaveLoadMenu::destructor		vtable-store
 0x005CC530	start	SaveLoadMenu::vf10		rtti
 0x005CC6D0	start	SaveLoadMenu::vf11		rtti
 0x005CC6F0	start
@@ -14937,39 +14937,39 @@ address	kind	name	module	evidence	target
 0x005CCD90	start	SaveLoadMenu::vf14		rtti
 0x005CCE20	start
 0x005CCF60	start	SaveLoadMenu::vf13		rtti
-0x005CD1F0	start
-0x005CD220	start
+0x005CD1F0	start	Overlay::constructor		vtable-store
+0x005CD220	start	Overlay::destructor		vtable-store
 0x005CD230	start	Overlay::vf8		rtti
 0x005CD260	start	Overlay::vf9		rtti
 0x005CD290	start	Overlay::vf3		rtti
-0x005CD2C0	start
-0x005CD330	thunk				0x004068B6
+0x005CD2C0	start	Fader::constructor		vtable-store
+0x005CD330	thunk	j_RenderElement::constructor_or_destructor			0x004068B6
 0x005CD340	start	Fader::vf1		rtti
 0x005CD410	start	WaitIndicator::vf1		rtti
-0x005CD490	start
-0x005CD640	thunk				0x004068B6
+0x005CD490	start	Title::constructor		vtable-store
+0x005CD640	thunk	j_RenderElement::constructor_or_destructor			0x004068B6
 0x005CD650	start	Title::vf1		rtti
-0x005CD690	start
-0x005CD7A0	thunk				0x004068B6
+0x005CD690	start	Popup::constructor		vtable-store
+0x005CD7A0	thunk	j_RenderElement::constructor_or_destructor			0x004068B6
 0x005CD7B0	start	Popup::vf1		rtti
 0x005CD800	start
-0x005CD890	start
-0x005CDD10	thunk				0x004068B6
-0x005CDD20	start
-0x005CDE90	thunk				0x004068B6
+0x005CD890	start	StatusBar::constructor		vtable-store
+0x005CDD10	thunk	j_RenderElement::constructor_or_destructor			0x004068B6
+0x005CDD20	start	MyButton::constructor		vtable-store
+0x005CDE90	thunk	j_RenderElement::constructor_or_destructor			0x004068B6
 0x005CDEA0	start	MyButton::vf5		rtti
 0x005CDEE0	start	MyButton::vf6		rtti
 0x005CDF10	start	MyButton::vf7		rtti
 0x005CDF40	start	MyButton::vf1		rtti
-0x005CDFC0	start
-0x005CE0F0	start
-0x005CE100	start
-0x005CE240	start
+0x005CDFC0	start	ConfirmExitOverlay::constructor		vtable-store
+0x005CE0F0	start	Overlay::destructor		vtable-store
+0x005CE100	start	WarningBanner::constructor		vtable-store
+0x005CE240	start	Overlay::destructor		vtable-store
 0x005CE250	start
 0x005CE290	start
 0x005CE2D0	start
 0x005CE360	start
-0x005CE440	start
+0x005CE440	start	MyButton::constructor		vtable-store
 0x005CE590	start
 0x005CE5B0	start
 0x005CE5E0	start
@@ -14993,8 +14993,8 @@ address	kind	name	module	evidence	target
 0x005CE7D0	start
 0x005CE7E0	start	Overlay::vf0		rtti
 0x005CE810	start	Fader::vf0		rtti
-0x005CE840	start
-0x005CE9C0	thunk				0x004068B6
+0x005CE840	start	WaitIndicator::constructor		vtable-store
+0x005CE9C0	thunk	j_RenderElement::constructor_or_destructor			0x004068B6
 0x005CE9D0	start	WaitIndicator::vf0		rtti
 0x005CEA00	start	Title::vf0		rtti
 0x005CEA30	start	Popup::vf0		rtti
@@ -15155,26 +15155,26 @@ address	kind	name	module	evidence	target
 0x005D2360	alias				0x005D22C8
 0x005D2364	start
 0x005D23D9	start
-0x005D23F4	start
+0x005D23F4	start	std::exception::constructor_or_destructor		vtable-store
 0x005D2411	start	std::exception::vf1		rtti
 0x005D241E	start
 0x005D245E	start
-0x005D247C	start
+0x005D247C	start	std::exception::constructor_or_destructor		vtable-store
 0x005D24A3	start
-0x005D24D8	start
-0x005D24E3	start
-0x005D250C	start
-0x005D2535	start
+0x005D24D8	start	std::exception::constructor_or_destructor		vtable-store
+0x005D24E3	start	std::bad_cast::constructor		vtable-store
+0x005D250C	start	std::bad_typeid::constructor		vtable-store
+0x005D2535	start	std::__non_rtti_object::constructor		vtable-store
 0x005D255D	start	std::exception::vf0		rtti
-0x005D2584	start
+0x005D2584	start	std::exception::constructor_or_destructor		vtable-store
 0x005D25A9	start	std::bad_cast::vf0		rtti
-0x005D25D0	start
+0x005D25D0	start	std::bad_cast::constructor		vtable-store
 0x005D25ED	start	std::bad_typeid::vf0		rtti
-0x005D2614	start
+0x005D2614	start	std::bad_typeid::constructor		vtable-store
 0x005D2631	start	std::__non_rtti_object::vf0		rtti
-0x005D2658	start
+0x005D2658	start	std::__non_rtti_object::constructor		vtable-store
 0x005D2675	start
-0x005D2689	start
+0x005D2689	start	type_info::constructor_or_destructor		vtable-store
 0x005D2699	start	type_info::vf0		rtti
 0x005D26BA	start
 0x005D26D8	start
@@ -15184,7 +15184,7 @@ address	kind	name	module	evidence	target
 0x005D2751	start
 0x005D2760	alias				0x005D2751
 0x005D2770	start
-0x005D282E	start
+0x005D282E	start	std::bad_alloc::constructor		vtable-store
 0x005D2854	start
 0x005D285E	alias				0x005D2854
 0x005D286B	alias				0x005D2854
@@ -15805,8 +15805,8 @@ address	kind	name	module	evidence	target
 0x005DFA23	start
 0x005DFA76	start
 0x005DFA80	start
-0x005DFB08	start
-0x005DFB26	start
+0x005DFB08	start	std::bad_exception::constructor		vtable-store
+0x005DFB26	start	std::bad_exception::destructor		vtable-store
 0x005DFB31	start	std::bad_exception::vf0		rtti
 0x005DFB58	start
 0x005DFBB7	start
@@ -15858,7 +15858,7 @@ address	kind	name	module	evidence	target
 0x005E0743	start
 0x005E07B1	start
 0x005E08B8	start
-0x005E0C2D	start
+0x005E0C2D	start	std::bad_exception::constructor		vtable-store
 0x005E0C4A	start
 0x005E0D30	start
 0x005E0D3F	start
@@ -17642,26 +17642,26 @@ address	kind	name	module	evidence	target
 0x00603CE1	start
 0x00603D33	start
 0x00603DE3	start
-0x00603DFA	start
-0x00603E1D	start
+0x00603DFA	start	std::logic_error::constructor		vtable-store
+0x00603E1D	start	std::invalid_argument::constructor		vtable-store
 0x00603E41	start
-0x00603E46	start
+0x00603E46	start	std::length_error::constructor		vtable-store
 0x00603E6A	start
-0x00603E6F	start
+0x00603E6F	start	std::out_of_range::constructor		vtable-store
 0x00603E93	start
-0x00603E98	start
+0x00603E98	start	std::runtime_error::constructor		vtable-store
 0x00603EB6	start
-0x00603EBB	start
+0x00603EBB	start	std::overflow_error::constructor		vtable-store
 0x00603EDF	start
 0x00603EE4	start
-0x00603F14	start
+0x00603F14	start	std::logic_error::constructor		vtable-store
 0x00603F31	start
-0x00603F61	start
+0x00603F61	start	std::length_error::constructor		vtable-store
 0x00603F7E	start
 0x00603F80	start
-0x00603FAE	start
+0x00603FAE	start	std::out_of_range::constructor		vtable-store
 0x00603FCB	start
-0x00603FFB	start
+0x00603FFB	start	std::runtime_error::constructor		vtable-store
 0x00604018	start
 0x00604048	start	std::logic_error::vf0		rtti
 0x00604069	start	std::invalid_argument::vf0		rtti
@@ -17669,8 +17669,8 @@ address	kind	name	module	evidence	target
 0x006040AB	start	std::out_of_range::vf0		rtti
 0x006040CC	start	std::runtime_error::vf0		rtti
 0x006040ED	start	std::overflow_error::vf0		rtti
-0x0060410E	start
-0x0060412B	start
+0x0060410E	start	std::invalid_argument::constructor		vtable-store
+0x0060412B	start	std::overflow_error::constructor		vtable-store
 0x0060414E	import	j_RtlUnwind			0x00E1A760
 0x00604310	start
 0x00604353	start
